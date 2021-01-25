@@ -9,6 +9,7 @@ import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.math.BigInteger;
 import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
@@ -24,8 +25,11 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+import java.security.MessageDigest;
+
 
 public class LoginTask extends AsyncTask<String, Void, String> {
     private Context context;
@@ -48,13 +52,13 @@ public class LoginTask extends AsyncTask<String, Void, String> {
             String data  = URLEncoder.encode("email", "UTF-8") + "=" +
                     URLEncoder.encode(this.email, "UTF-8");
             data += "&" + URLEncoder.encode("password", "UTF-8") + "=" +
-                    URLEncoder.encode(this.password, "UTF-8");
+                    URLEncoder.encode(getSHA(this.password), "UTF-8");
 
             if (type == "register") {
-                data += "&" + URLEncoder.encode("confirm_password", "UTF-8") + "=" +
-                        URLEncoder.encode(this.name, "UTF-8");
                 data += "&" + URLEncoder.encode("name", "UTF-8") + "=" +
-                        URLEncoder.encode(this.confirm_password, "UTF-8");
+                        URLEncoder.encode(this.name, "UTF-8");
+                data += "&" + URLEncoder.encode("confirm_password", "UTF-8") + "=" +
+                        URLEncoder.encode(getSHA(this.confirm_password), "UTF-8");
             }
 
             URL url = new URL(link);
@@ -81,6 +85,41 @@ public class LoginTask extends AsyncTask<String, Void, String> {
             return sb.toString();
         } catch(Exception e){
             return "0";
+        }
+    }
+
+    public static String getSHA(String input)
+    {
+
+        try {
+
+            // Static getInstance method is called with hashing SHA
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+
+            // digest() method called
+            // to calculate message digest of an input
+            // and return array of byte
+            byte[] messageDigest = md.digest(input.getBytes());
+
+            // Convert byte array into signum representation
+            BigInteger no = new BigInteger(1, messageDigest);
+
+            // Convert message digest into hex value
+            String hashtext = no.toString(16);
+
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+
+            return hashtext;
+        }
+
+        // For specifying wrong message digest algorithms
+        catch (NoSuchAlgorithmException e) {
+            System.out.println("Exception thrown"
+                    + " for incorrect algorithm: " + e);
+
+            return null;
         }
     }
 

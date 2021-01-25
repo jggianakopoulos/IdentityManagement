@@ -3,4 +3,5 @@
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in_short">Signing in</string>
+    <string name="confirm_password">Confirm Password</string>
 </resources>
