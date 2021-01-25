@@ -1,6 +1,8 @@
 package com.group.idm2;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -25,28 +27,35 @@ import org.apache.http.message.BasicNameValuePair;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoginActivity extends AsyncTask<String, Void, String> {
+public class LoginTask extends AsyncTask<String, Void, String> {
     private Context context;
-    private String username, password, type;
+    private String email, type, actionWord, name, password, confirm_password;
 
-    public LoginActivity(Context context, String username, String password, String type) {
+    public LoginTask(Context context, String type, String email, String password, String confirm_password, String name) {
         this.context = context;
-        this.username = username;
+        this.email = email;
         this.password = password;
+        this.confirm_password = confirm_password;
         this.type = type;
+        this.actionWord = (type == "register") ? "registration" : type;
+        this.name = name;
     }
 
     protected String doInBackground(String... arg0) {
 
         try{
-            String username = this.username;
-            String password = this.password;
-
             String link="http://10.0.2.2/identitymanagement/" + this.type + ".php";
-            String data  = URLEncoder.encode("username", "UTF-8") + "=" +
-                    URLEncoder.encode(username, "UTF-8");
+            String data  = URLEncoder.encode("email", "UTF-8") + "=" +
+                    URLEncoder.encode(this.email, "UTF-8");
             data += "&" + URLEncoder.encode("password", "UTF-8") + "=" +
-                    URLEncoder.encode(password, "UTF-8");
+                    URLEncoder.encode(this.password, "UTF-8");
+
+            if (type == "register") {
+                data += "&" + URLEncoder.encode("confirm_password", "UTF-8") + "=" +
+                        URLEncoder.encode(this.name, "UTF-8");
+                data += "&" + URLEncoder.encode("name", "UTF-8") + "=" +
+                        URLEncoder.encode(this.confirm_password, "UTF-8");
+            }
 
             URL url = new URL(link);
             URLConnection conn = url.openConnection();
@@ -80,11 +89,15 @@ public class LoginActivity extends AsyncTask<String, Void, String> {
             if (Integer.parseInt(result) > 0) {
                 //Go to logged in
                 System.out.println("Successful login");
+                Intent send = new Intent(this.context, HomeActivity.class);
+                context.startActivity(send);
             } else {
-                Toast.makeText(this.context,"Error logging in",Toast.LENGTH_SHORT).show();
+                System.out.println(result);
+                Toast.makeText(this.context,"An error occurred with your " + this.actionWord,Toast.LENGTH_SHORT).show();
             }
         } catch (Exception e) {
-            Toast.makeText(this.context,"Error logging in",Toast.LENGTH_SHORT).show();
+            System.out.println(result);
+            Toast.makeText(this.context,"An error occurred with your " + this.actionWord,Toast.LENGTH_SHORT).show();
         }
     }
 }

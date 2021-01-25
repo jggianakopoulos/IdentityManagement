@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">IDM 2</string>
+    <string name="app_name">Identity Management</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in_short">Signing in</string>
 </resources>
