@@ -5,6 +5,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 import java.util.regex.Pattern;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AbstractActivity extends AppCompatActivity {
