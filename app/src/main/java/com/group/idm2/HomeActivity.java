@@ -18,13 +18,18 @@ public class HomeActivity extends AppCompatActivity {
         this.startActivity(send);
     }
 
+    public void changePassword(View view) {
+        Intent send = new Intent(this, PasswordActivity.class);
+        this.startActivity(send);
+    }
+
     public void updateFace(View view) {
 
     }
     public void signOut(View view) {
-        Intent newIntent = new Intent(this,MainActivity.class);
-        newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(newIntent);
+        Intent login = new Intent(this,LoginActivity.class);
+        login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        login.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(login);
     }
 }

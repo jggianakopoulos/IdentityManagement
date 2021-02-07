@@ -58,6 +58,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="64dp"
         android:text="Edit"
+        android:onClick="changePassword"
         app:layout_constraintBottom_toTopOf="@+id/Edit5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -73,6 +74,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="60dp"
         android:text="Edit"
+        android:onClick="updateProfile"
         app:layout_constraintBottom_toTopOf="@+id/Edit4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -169,7 +171,7 @@
         android:layout_marginBottom="72dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="Change Password"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName6"
         app:layout_constraintStart_toEndOf="@+id/imageView3" />
 
@@ -195,7 +197,7 @@
         android:layout_marginBottom="68dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="Update Profile"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName7"
         app:layout_constraintStart_toEndOf="@+id/imageView2" />
 

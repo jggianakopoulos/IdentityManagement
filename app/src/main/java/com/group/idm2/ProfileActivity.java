@@ -1,37 +1,40 @@
 package com.group.idm2;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
-import androidx.appcompat.app.AppCompatActivity;
+public class ProfileActivity extends AbstractActivity {
 
-public class ProfileActivity extends AppCompatActivity {
-    private EditText emailET, passwordET, confirmpasswordET, nameET;
-    Button loginButton, registerButton;
+    private EditText emailET, passwordET, firstNameET, lastNameET, phoneNumberET;
+    private SharedPreferences sharedPreferences;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
         emailET = (EditText)findViewById(R.id.emailET);
         passwordET = (EditText)findViewById(R.id.passwordET);
-        confirmpasswordET = (EditText)findViewById(R.id.confirmpasswordET);
-        nameET = (EditText)findViewById(R.id.nameET);
+        firstNameET = (EditText)findViewById(R.id.firstNameET);
+        lastNameET = (EditText)findViewById(R.id.lastNameET);
+        phoneNumberET = (EditText)findViewById(R.id.phoneNumberET);
+
+        SharedPreferences sharedPreferences = this.getSharedPreferences("preferences",MODE_PRIVATE);
+
+        emailET.setText(sharedPreferences.getString("email", ""));
+        firstNameET.setText(sharedPreferences.getString("first_name", ""));
+        lastNameET.setText(sharedPreferences.getString("last_name", ""));
+        phoneNumberET.setText(sharedPreferences.getString("phone_number", ""));
     }
 
-    public void updateProfile() {
-        System.out.println("update");
+    public void update(View view) {
+        String email = emailET.getText().toString().trim();
+        String password = passwordET.getText().toString().trim();
+        String first_name = firstNameET.getText().toString().trim();
+        String last_name = lastNameET.getText().toString().trim();
+        String phone_number = phoneNumberET.getText().toString().trim();
+
+        new LoginTask(this, "profileupdate", email, password, "", first_name, last_name, phone_number, "").execute();
     }
-
-    public void register(View view) {
-        String email = emailET.getText().toString();
-        String password = passwordET.getText().toString();
-        String confirm_password = confirmpasswordET.getText().toString();
-        String name = nameET.getText().toString();
-
-        new LoginTask(this, "register", email, password, confirm_password, name).execute("register", email, password,confirm_password, name);
-    }
-
 }
