@@ -43,6 +43,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="72dp"
         android:text="Edit"
+        android:onClick="updateFace"
         app:layout_constraintBottom_toTopOf="@+id/Edit3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
