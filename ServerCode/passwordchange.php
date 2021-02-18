@@ -1,5 +1,7 @@
 <?php
-
+   
+   $dbuser = 'IMApp';
+   $dbpw = 't!5@m9N5QFAv8UWE';
    $email = (array_key_exists('email', $_POST)) ? $_POST["email"] : "";
    $password = (array_key_exists('password', $_POST)) ? $_POST["password"] : "";
    $new_password = (array_key_exists('new_password', $_POST)) ? $_POST["new_password"] : "";
@@ -11,7 +13,7 @@
       $error_message = "You must include a valid password";
    } else {
       try {
-      	$pdo = new PDO("mysql:host=localhost;dbname=identitymanagement", 'root', "");
+      	$pdo = new PDO("mysql:host=localhost;dbname=identity", 'IMApp', 't!5@m9N5QFAv8UWE');
          $stmt = $pdo->prepare("select * from user where email = ? and password = ?");
          $stmt->execute(array($email, $password));
          $user = $stmt->fetch(PDO::FETCH_ASSOC);
