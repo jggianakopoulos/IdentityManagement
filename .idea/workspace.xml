@@ -10,14 +10,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5914534d-aaf3-48c4-a778-41f2616f3e5d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_start.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documentation/doc.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Facial-Detection/build/facedetect/Analysis-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Facial-Detection/build/facedetect/EXE-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Facial-Detection/build/facedetect/base_library.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Facial-Detection/build/facedetect/facedetect.exe.manifest" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Facial-Detection/facedetect.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Facial-Detection/haarcascade_frontalface_default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Facial-Detection/nfaces.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Facial-Detection/test.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/activity_face.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/activity_home.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/activity_login.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/activity_options.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/activity_profile.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/activity_register.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/group/idm2/HomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/group/idm2/HomeActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/group/idm2/FaceActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/group/idm2/FaceActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/group/idm2/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/group/idm2/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/group/idm2/LoginTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/group/idm2/LoginTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_face.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_face.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +72,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="valueResourceFile" />
-        <option value="Class" />
         <option value="layoutResourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -65,9 +96,10 @@
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="memory.settings.postsync.last.time.stamp" value="1611525898009" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Dependencies" />
     <property name="project.structure.proportion" value="0.17" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -161,9 +193,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="469" y="266" key="#PSD" timestamp="1611450200001">
+    <state x="469" y="266" key="#PSD" timestamp="1614312013164">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="469" y="266" key="#PSD/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614312013164" />
     <state x="469" y="266" key="#PSD/0.0.1920.1040/-2560.-349.2048.1112@0.0.1920.1040" timestamp="1611450200001" />
     <state x="669" y="106" key="#app" timestamp="1612732916604">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -177,9 +210,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="100" y="100" width="1706" height="840" key="AVDManager/0.0.1920.1040/-2560.-349.2048.1112@0.0.1920.1040" timestamp="1611541065027" />
-    <state x="519" y="272" key="AndroidCreateResourceFileDialog" timestamp="1613005501452">
+    <state x="519" y="272" key="AndroidCreateResourceFileDialog" timestamp="1614398678224">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="519" y="272" key="AndroidCreateResourceFileDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614398678224" />
     <state x="519" y="272" key="AndroidCreateResourceFileDialog/0.0.1920.1040/-2560.-349.2048.1112@0.0.1920.1040" timestamp="1613005501452" />
     <state x="484" y="289" key="AndroidCreateResourceFileDialog/0.25.1792.1010@0.25.1792.1010" timestamp="1611528505510" />
     <state x="805" y="327" key="AndroidCreateXmlResourceDialog" timestamp="1611563552778">
@@ -190,26 +224,43 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="732" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-2560.-349.2048.1112@0.0.1920.1040" timestamp="1611378548113" />
-    <state width="1858" height="201" key="GridCell.Tab.0.bottom" timestamp="1613008272154">
+    <state width="1859" height="46" key="GridCell.Tab.0.bottom" timestamp="1614576675117">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1859" height="46" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614576675117" />
     <state width="1858" height="201" key="GridCell.Tab.0.bottom/0.0.1920.1040/-2560.-349.2048.1112@0.0.1920.1040" timestamp="1613008272154" />
-    <state width="1858" height="201" key="GridCell.Tab.0.center" timestamp="1613008272154">
+    <state width="1859" height="46" key="GridCell.Tab.0.center" timestamp="1614576675117">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1859" height="46" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614576675117" />
     <state width="1858" height="201" key="GridCell.Tab.0.center/0.0.1920.1040/-2560.-349.2048.1112@0.0.1920.1040" timestamp="1613008272154" />
-    <state width="1858" height="201" key="GridCell.Tab.0.left" timestamp="1613008272154">
+    <state width="1859" height="46" key="GridCell.Tab.0.left" timestamp="1614576675117">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1859" height="46" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614576675117" />
     <state width="1858" height="201" key="GridCell.Tab.0.left/0.0.1920.1040/-2560.-349.2048.1112@0.0.1920.1040" timestamp="1613008272154" />
-    <state width="1858" height="201" key="GridCell.Tab.0.right" timestamp="1613008272154">
+    <state width="1859" height="46" key="GridCell.Tab.0.right" timestamp="1614576675117">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1859" height="46" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614576675117" />
     <state width="1858" height="201" key="GridCell.Tab.0.right/0.0.1920.1040/-2560.-349.2048.1112@0.0.1920.1040" timestamp="1613008272154" />
-    <state x="659" y="120" width="585" height="801" key="find.popup" timestamp="1612731765107">
+    <state x="460" y="167" key="SettingsEditor" timestamp="1614311709039">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="460" y="167" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614311709039" />
+    <state x="659" y="120" width="714" height="801" key="find.popup" timestamp="1614575365017">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="659" y="120" width="714" height="801" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614575365017" />
     <state x="659" y="120" width="585" height="801" key="find.popup/0.0.1920.1040/-2560.-349.2048.1112@0.0.1920.1040" timestamp="1612731765107" />
+    <state x="687" y="373" key="psd.add.jar.dependency.panel.dimension" timestamp="1614311797796">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="687" y="373" key="psd.add.jar.dependency.panel.dimension/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614311797796" />
+    <state x="477" y="264" key="psd.add.library.dependency.panel.dimension" timestamp="1614311893751">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="477" y="264" key="psd.add.library.dependency.panel.dimension/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614311893751" />
     <state x="616" y="242" key="run.anything.popup" timestamp="1612730375029">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
