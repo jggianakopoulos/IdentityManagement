@@ -61,7 +61,7 @@ public class LoginTask extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... arg0) {
 
         try{
-            String link="http://10.0.2.2/identitymanagement/" + this.type + ".php";
+            String link="http://34.86.252.125/" + this.type + ".php";
             String data  = URLEncoder.encode("email", "UTF-8") + "=" +
                     URLEncoder.encode(this.email, "UTF-8");
             data += "&" + URLEncoder.encode("password", "UTF-8") + "=" +
@@ -156,14 +156,14 @@ public class LoginTask extends AsyncTask<String, Void, String> {
         try {
             JSONObject json = new JSONObject(result);
             JSONObject user = json.getJSONObject("user");
-            if (Integer.parseInt(user.getString("user_id")) > 0) {
+            if (Integer.parseInt(user.getString("UserID")) > 0) {
                 //Go to logged in
                 System.out.println("Successful login");
                 SharedPreferences.Editor editor = this.sharedPreferences.edit();
-                editor.putString("first_name", user.getString("first_name"));
-                editor.putString("last_name", user.getString("last_name"));
-                editor.putString("email", user.getString("email"));
-                editor.putString("phone_number", user.getString("phone_number"));
+                editor.putString("first_name", user.getString("FirstName"));
+                editor.putString("last_name", user.getString("LastName"));
+                editor.putString("email", user.getString("Email"));
+                //editor.putString("phone_number", user.getString("phone_number"));
                 editor.apply();
 
                 Intent send = new Intent(this.context, HomeActivity.class);
