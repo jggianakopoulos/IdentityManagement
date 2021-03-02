@@ -1,5 +1,5 @@
 <?php
-	
+require('dbconn.php');
    $email = $_POST['email'];
    $password = $_POST['password'];
    $error_message = "";
@@ -10,18 +10,18 @@
       try {
       	// We should reconsider the security of all of this. Especially the echoing of user info
       	// Also add an api access user to the database and change the line below
-         $pdo = new PDO("mysql:host=localhost;dbname=identitymanagement", 'root', "");
-         $stmt = $pdo->prepare("select * from user where email = ? and password = ?");
+         $pdo = new PDO("mysql:host=$servername;dbname=$database", $dbusername, $dbpassword);
+         $stmt = $pdo->prepare("select * from user where Email = ? and PasswordHash = ?");
          $stmt->execute(array($email, $password));
          $user = $stmt->fetch(PDO::FETCH_ASSOC);
-         if (!is_null($user) && array_key_exists("user_id", $user)) {
+         if (!is_null($user) && array_key_exists("UserID", $user)) {
          	echo json_encode(array(
          		"user" => $user,
-         		"user_id" => $user["user_id"],
+         		"UserID" => $user["UserID"],
          		"error_message" => ""
          	));
          } else {
-         	$error_message = "A user does not exist with these credentials";
+         	$error_message =  "A user does not exist with these credentials";
          }
 
       } catch (Exception $e) {
@@ -33,7 +33,7 @@
    if ($error_message != "") {
    		echo json_encode(array(
    			"error_message" => $error_message,
-   			"user_id" => 0,
+   			"UserID" => 0,
    			"user" => ""
    		));
    }
