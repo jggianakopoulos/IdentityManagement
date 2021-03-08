@@ -24,7 +24,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void updateFace(View view) {
-
+        Intent send = new Intent(this, FaceActivity.class);
+        this.startActivity(send);
     }
     public void signOut(View view) {
         Intent login = new Intent(this,LoginActivity.class);
