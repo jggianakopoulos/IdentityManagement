@@ -1,15 +1,14 @@
-package com.group.idm2;
+package com.group.idm2.Activities;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import com.group.idm2.R;
+import com.group.idm2.Tasks.RegisterTask;
 
 public class RegisterActivity extends AbstractActivity {
     private EditText emailET, passwordET, confirmPasswordET, firstNameET, lastNameET, phoneNumberET;
-    Button loginButton, registerButton;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
@@ -45,7 +44,7 @@ public class RegisterActivity extends AbstractActivity {
             return;
         }
 
-        new LoginTask(this, "register", email, password, confirm_password, first_name, last_name, phone_number, "").execute();
+        new RegisterTask(this, email, password, confirm_password, first_name, last_name, phone_number).execute();
     }
 
 }

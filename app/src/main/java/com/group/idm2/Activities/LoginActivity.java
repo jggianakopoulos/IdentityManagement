@@ -1,4 +1,4 @@
-package com.group.idm2;
+package com.group.idm2.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import com.group.idm2.Tasks.LoginTask;
+import com.group.idm2.R;
 
 public class LoginActivity extends AbstractActivity {
 
@@ -38,7 +39,7 @@ public class LoginActivity extends AbstractActivity {
             showToast(this,"Error: Invalid Password.");
             return;
         }
-        new LoginTask(this, "login", email, password, "", "", "", "", "").execute();
+        new LoginTask(this, email, password).execute();
     }
 
     public void register(View view) {

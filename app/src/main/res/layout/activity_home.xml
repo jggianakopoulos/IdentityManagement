@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".Activities.HomeActivity">
 
     <View
         android:id="@+id/topView"
@@ -33,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="Edit"
+        android:onClick="updateProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.86"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,6 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="Edit"
+        android:onClick="changePassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.86"
         app:layout_constraintStart_toStartOf="parent"

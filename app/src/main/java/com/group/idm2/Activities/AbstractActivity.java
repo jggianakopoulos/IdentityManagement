@@ -1,4 +1,4 @@
-package com.group.idm2;
+package com.group.idm2.Activities;
 
 
 import android.content.Context;

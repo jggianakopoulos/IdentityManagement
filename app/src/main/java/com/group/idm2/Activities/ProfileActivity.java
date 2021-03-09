@@ -1,9 +1,11 @@
-package com.group.idm2;
+package com.group.idm2.Activities;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import com.group.idm2.R;
+import com.group.idm2.Tasks.ProfileTask;
 
 public class ProfileActivity extends AbstractActivity {
 
@@ -35,6 +37,6 @@ public class ProfileActivity extends AbstractActivity {
         String last_name = lastNameET.getText().toString().trim();
         String phone_number = phoneNumberET.getText().toString().trim();
 
-        new LoginTask(this, "profileupdate", email, password, "", first_name, last_name, phone_number, "").execute();
+        new ProfileTask(this, email, password, first_name, last_name, phone_number).execute();
     }
 }

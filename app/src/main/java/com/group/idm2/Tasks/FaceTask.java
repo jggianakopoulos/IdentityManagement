@@ -1,4 +1,4 @@
-package com.group.idm2;
+package com.group.idm2.Tasks;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -42,13 +42,13 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class ImageTask extends AsyncTask<String, Void, String> {
+public class FaceTask extends AsyncTask<String, Void, String> {
     private Context context;
     private Bitmap image;
     private SharedPreferences sharedPreferences;
 
 
-    public ImageTask(Context context, Bitmap image) {
+    public FaceTask(Context context, Bitmap image) {
         this.image = image;
         this.context = context;
         this.sharedPreferences = context.getSharedPreferences("preferences",MODE_PRIVATE);

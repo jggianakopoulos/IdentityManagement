@@ -1,9 +1,10 @@
-package com.group.idm2;
+package com.group.idm2.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
+
+import com.group.idm2.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,7 +29,7 @@ public class HomeActivity extends AppCompatActivity {
         this.startActivity(send);
     }
     public void signOut(View view) {
-        Intent login = new Intent(this,LoginActivity.class);
+        Intent login = new Intent(this, LoginActivity.class);
         login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         login.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(login);

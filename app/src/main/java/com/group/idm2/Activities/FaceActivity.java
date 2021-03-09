@@ -1,18 +1,17 @@
-package com.group.idm2;
+package com.group.idm2.Activities;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.LayerDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
+
+import com.group.idm2.Tasks.FaceTask;
+import com.group.idm2.R;
 
 import java.io.InputStream;
 
@@ -74,6 +73,6 @@ public class FaceActivity extends AbstractActivity {
     }
 
     public void updateFace(View view) {
-        new ImageTask(this, currentImage).execute();
+        new FaceTask(this, currentImage).execute();
     }
 }

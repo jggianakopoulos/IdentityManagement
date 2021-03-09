@@ -1,9 +1,11 @@
-package com.group.idm2;
+package com.group.idm2.Activities;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import com.group.idm2.R;
+import com.group.idm2.Tasks.PasswordTask;
 
 public class PasswordActivity extends AbstractActivity {
 
@@ -26,6 +28,6 @@ public class PasswordActivity extends AbstractActivity {
         String new_password = newPasswordET.getText().toString().trim();
 
         String email = (sharedPreferences.getString("email", ""));
-        new LoginTask(this, "passwordchange", email, old_password, confirm_password, "", "", "", new_password).execute();
+        new PasswordTask(this, email, old_password, new_password, confirm_password).execute();
     }
 }
