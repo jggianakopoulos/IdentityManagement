@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html class="backgroud-color">
 	<head>
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 		<link rel='stylesheet' type='text/css' href='styles.css'>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">       
 
 	</head>
-	<body>
+	<body class="background-color">
 
 		<div>
 			<div class="container">
@@ -18,26 +18,30 @@
 					<form action="/identitymanagement/facetest.php">
 						<div id="login">
 							<div>
-								<div>
+								<div class="input-field">
 									<label for='email'>Email</label>
 									<input type='text' name='email' id='email'>
 								</div>
-								<div>
+								<div class="input-field">
 									<label for='password'>Password</label>
 									<input type='password' name='password' id='password'>
 								</div>
 							</div>
-							<button type="button" id='submit'>Login</button>
-						</div>
-						<div id="verify" style="display:none">
-							<div>
-								<label for="myfile">Select files:</label>
-	  							<input type="file" id="myfile" name="file">
+							<div style="margin:5px;">
+								<button class="btn" type="button"style="margin:8px;" id='login-btn'>Cancel</button>
+								<button class="btn" style="float:right;margin:8px" type="button" id='continue'>Login</button>
 							</div>
-							<button id='submit'>Login</button>
+						</div>
+						<div id="verify" style="display: none">
+							<div class="input-field">
+								<label for="facefile">Select files:</label>
+	  							<input type="file" accept="image/*" name="file"id="facefile" name="facefile">
+							</div>
+							<button id='submit'>Verify</button>
 						</div>
 					</form>
 				</div>
+				<div>No account? Create one.</div>
 			</div>
 		</div>
 
@@ -66,7 +70,7 @@
 					})
 			};
 
-			$("#submit").click(ajax_function);
+			$("#login-btn").click(ajax_function);
 
 		</script>
 	</body>
