@@ -6,21 +6,26 @@
   flex-direction:column;
   align-items: center;
   justify-content: center;
-  height: 80vh;
   overflow: auto;
 }
 
 .content {
-	background-color:#c7c9e6;
+	background-color:#d3d4ea;
 	display:flex;
 	flex-direction:column;
-  border-radius:7px;
+    border-radius:7px;
+    border: 1px #7d7d7d solid;
+    margin-top:10px;
 }
 
 .tab {
-    margin:.5em;
+    padding: .5em;
+    background-color: #b9bcf9;
+    font-weight: bold;
     flex-grow: 1;
     text-align: center;
+    border: 1px black solid;
+    border-radius: 6px 6px 0 0;
 }
 
 .input-field {
@@ -30,6 +35,23 @@
     width: 300px;
 }
 
+.display-field {
+    display: flex;
+    flex-direction: row;
+    margin:10px 50px;
+    width: 800px;
+}
+
+.display-label {
+    width: 150px;
+    margin-right: 100px;
+    font-weight: bold;
+}
+
 .background-color {
-  background-color: #efefef;
+  background-color: #d4d4d8;
+}
+
+.hidden{ 
+    display: none!important;
 }
