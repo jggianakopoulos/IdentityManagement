@@ -1,6 +1,5 @@
 <?php
 
-
-//echo '{"user_id":10}';
-
-echo file_put_contents("test.txt", $_POST["image"]);
+require("../../factories/FaceFactory.php");
+$f = new FaceFactory();
+echo json_encode($f->considerUpdate($_REQUEST));

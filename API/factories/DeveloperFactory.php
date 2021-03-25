@@ -7,7 +7,7 @@ class DeveloperFactory extends AccountFactory {
     public function __construct() {
         parent::__construct();
         $this->table = "developer";
-        $this->table_id = "DeveloperID";
+        $this->table_id = "developer_id";
     }
 
     public function logout() {

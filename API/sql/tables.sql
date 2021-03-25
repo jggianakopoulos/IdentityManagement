@@ -35,3 +35,11 @@ create table accesstoken (
     token varchar(50) default '',
     foreign key (user_id) references user(user_id)
 );
+
+create table face (
+    face_id int primary key auto_increment,
+    user_id int not null,
+    path varchar(100),
+    created datetime default current_timestamp,
+    foreign key (user_id) references user(user_id)
+);
