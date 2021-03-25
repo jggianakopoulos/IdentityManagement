@@ -25,7 +25,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class AbstractTask extends AsyncTask<String, Void, String> {
     public Context context;
-    public String email, password, actionWord, script;
+    public String email, password, actionWord, script, server;
     public SharedPreferences sharedPreferences;
 
     public AbstractTask(Context context, String email, String password) {
@@ -35,6 +35,7 @@ public class AbstractTask extends AsyncTask<String, Void, String> {
         this.actionWord = "action";
         this.script = "test";
         this.sharedPreferences = context.getSharedPreferences("preferences",MODE_PRIVATE);
+        this.server = "10.0.2.2";
     }
 
     public RequestBody getRequestBody() {
@@ -47,7 +48,7 @@ public class AbstractTask extends AsyncTask<String, Void, String> {
 
         try{
 
-            String link = "http://34.86.252.125/" + this.script + ".php";
+            String link = "http://" + this.server + "/identitymanagement/api/user/" + this.script + ".php";
             OkHttpClient client = new OkHttpClient.Builder()
                     .build();
 
@@ -78,7 +79,7 @@ public class AbstractTask extends AsyncTask<String, Void, String> {
                 hashtext = "0" + hashtext;
             }
 
-            return hashtext;
+            return hashtext.toUpperCase();
         } catch (NoSuchAlgorithmException e) {
             System.out.println("Exception thrown"
             + " for incorrect algorithm: " + e);
@@ -91,15 +92,14 @@ public class AbstractTask extends AsyncTask<String, Void, String> {
         System.out.println(result);
         try {
             JSONObject json = new JSONObject(result);
-            JSONObject user = json.getJSONObject("user");
-            if (Integer.parseInt(user.getString("UserID")) > 0) {
+            if (Integer.parseInt(json.getString("user_id")) > 0) {
                 //Go to logged in
                 System.out.println("Successful action.");
                 SharedPreferences.Editor editor = this.sharedPreferences.edit();
-                editor.putString("first_name", user.getString("FirstName"));
-                editor.putString("last_name", user.getString("LastName"));
-                editor.putString("email", user.getString("Email"));
-                //editor.putString("phone_number", user.getString("phone_number"));
+                editor.putString("first_name", json.getString("first_name"));
+                editor.putString("last_name", json.getString("last_name"));
+                editor.putString("email", json.getString("email"));
+                editor.putString("password", json.getString("password"));
                 editor.apply();
 
                 Intent send = new Intent(this.context, HomeActivity.class);

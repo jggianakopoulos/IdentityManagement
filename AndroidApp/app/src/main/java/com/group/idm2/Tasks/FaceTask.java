@@ -24,7 +24,7 @@ public class FaceTask extends AbstractTask {
         return new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("email", this.email)
-                .addFormDataPart("password", this.getSHA(this.password))
+                .addFormDataPart("password", this.password)
                 .addFormDataPart("image", encodeToBase64(this.image))
                 .build();
     }

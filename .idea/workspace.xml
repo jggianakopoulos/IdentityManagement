@@ -10,83 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f060a74-344e-4225-9f1c-15296abb890b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileChanges/last-build.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.5/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OldLayouts/activity_face.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OldLayouts/activity_home.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OldLayouts/activity_login.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OldLayouts/activity_password.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OldLayouts/activity_profile.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OldLayouts/activity_register.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Presentations/Identity Management Sprint 1.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Presentations/Identity Management Sprint 2.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Presentations/Identity Management Sprint 3.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Presentations/Identity Management Sprint 4.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Presentations/Identity Management Sprint 5.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/group/idm2/ExampleInstrumentedTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/group/idm2/Activities/AbstractActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/group/idm2/Activities/FaceActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/group/idm2/Activities/HomeActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/group/idm2/Activities/LoginActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/group/idm2/Activities/PasswordActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/group/idm2/Activities/ProfileActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/group/idm2/Activities/RegisterActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/group/idm2/Tasks/AbstractTask.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/group/idm2/Tasks/FaceTask.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/group/idm2/Tasks/LoginTask.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/group/idm2/Tasks/PasswordTask.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/group/idm2/Tasks/ProfileTask.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/group/idm2/Tasks/RegisterTask.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_face.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_options.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_password.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_start.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/group/idm2/ExampleUnitTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AndroidApp/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/.idea/gradle.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +139,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5914534d-aaf3-48c4-a778-41f2616f3e5d" name="Default Changelist" comment="" />
+      <changelist id="7f060a74-344e-4225-9f1c-15296abb890b" name="Default Changelist" comment="" />
       <created>1611376568161</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -240,9 +165,10 @@
     </state>
     <state x="469" y="266" key="#PSD/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614312013164" />
     <state x="469" y="266" key="#PSD/0.0.1920.1040/-2560.-349.2048.1112@0.0.1920.1040" timestamp="1611450200001" />
-    <state x="669" y="106" key="#app" timestamp="1612732916604">
+    <state x="669" y="106" key="#app" timestamp="1616632026403">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="669" y="106" key="#app/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1616632026403" />
     <state x="669" y="106" key="#app/0.0.1920.1040/-2560.-349.2048.1112@0.0.1920.1040" timestamp="1612732916604" />
     <state x="764" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1615174644793">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -267,9 +193,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="805" y="327" key="AndroidCreateXmlResourceDialog/0.0.1920.1040/-2560.-349.2048.1112@0.0.1920.1040" timestamp="1611563552778" />
-    <state x="732" y="275" key="FileChooserDialogImpl" timestamp="1611378548113">
+    <state x="732" y="275" key="FileChooserDialogImpl" timestamp="1616632048488">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="732" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1616632048488" />
     <state x="732" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-2560.-349.2048.1112@0.0.1920.1040" timestamp="1611378548113" />
     <state width="936" height="50" key="GridCell.Tab.0.bottom" timestamp="1615579961046">
       <screen x="0" y="0" width="1920" height="1040" />
