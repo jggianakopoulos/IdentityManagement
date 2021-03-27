@@ -1,6 +1,6 @@
 <?php
 
-require("BaseFactory.php");
+require_once("BaseFactory.php");
 
 // This factory is extended by all entities that have login/register/update profile functionality
 

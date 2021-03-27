@@ -1,6 +1,6 @@
 <?php
 
-require("UserFactory.php");
+require_once("UserFactory.php");
 
 class FaceFactory extends BaseFactory {
 
@@ -31,7 +31,13 @@ class FaceFactory extends BaseFactory {
         if ($new_face == "") {
             return $this->errorArray("Error with new image");
         }
-        return $this->openCVCompare($face["path"], $new_face);
+        $result =  $this->openCVCompare($face["path"], $new_face);
+
+        if ($result == "Same") {
+            return $user;
+        } else {
+            return $this->errorArray("Different faces");
+        }
     }
 
     protected function storeImage($image) {
@@ -46,10 +52,11 @@ class FaceFactory extends BaseFactory {
         }
     }
 
-    public function openCVCompare($face, $new_face) {
+    protected function openCVCompare($face, $new_face) {
         $command = escapeshellcmd('python ../../python/facecheck.py ' . $face . ' ' . $new_face);
         $output = shell_exec($command);
-        return $output;
+        // Change this to actually give an output
+        return "Same";
     }
 
     protected function base64toImage($base64) {
@@ -58,7 +65,7 @@ class FaceFactory extends BaseFactory {
         return base64_decode($img);
     }
 
-    public function checkFaceData($data) {
+    protected function checkFaceData($data) {
         $values = $this->_validateUpdate($data);
 
         if (!array_key_exists("user_id", $values) || !($values["user_id"] > 0)) {

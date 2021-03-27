@@ -1,6 +1,6 @@
 <?php
 
-require("AccountFactory.php");
+require_once("AccountFactory.php");
 
 class UserFactory extends AccountFactory {
     public function __construct() {

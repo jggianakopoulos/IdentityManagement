@@ -1,7 +1,7 @@
 <?php
 
-require('../../factories/FaceFactory.php');
-$f = new FaceFactory();
+require('../../factories/TokenFactory.php');
+$f = new TokenFactory();
 
-echo json_encode($f->considerCompareFaces($_REQUEST));
+echo json_encode($f->attemptCreateToken($_REQUEST));
 ?>

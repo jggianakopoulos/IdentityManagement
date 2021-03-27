@@ -1,6 +1,6 @@
 <?php
 
-require("AccountFactory.php");
+require_once("AccountFactory.php");
 
 class DeveloperFactory extends AccountFactory {
 

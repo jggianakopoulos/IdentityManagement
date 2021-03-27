@@ -1,8 +1,7 @@
 <?php
 
-require("BaseFactory.php");
-require("UserFactory.php");
-require("FaceFactory.php");
+require_once("UserFactory.php");
+require_once("FaceFactory.php");
 
 class TokenFactory extends BaseFactory
 {
@@ -14,18 +13,64 @@ class TokenFactory extends BaseFactory
 
     public function attemptCreateToken($data) {
         $user = $this->_validateCreateToken($data);
+        $permissions = $this->_getValue($data, "permissions");
+        $developer_id = $this->_getDevIDByClientID($data["client_id"]);
 
-        return $this->createToken($user);
+        if (is_array($developer_id) && !$this->_noError($developer_id)) {
+            return $developer_id;
+        }
+
+        if ($this->_hasValue($permissions)) {
+            $permissions = explode(",", $permissions);
+
+            $user["permission_email"] = (in_array("email", $permissions)) ? 1 : 0;
+            $user["permission_firstname"] = (in_array("firstname", $permissions)) ? 1 : 0;
+            $user["permission_lastname"] = (in_array("lastname", $permissions)) ? 1 : 0;
+        } else {
+            $user["permission_email"] = 0;
+            $user["permission_firstname"] = 0;
+            $user["permission_lastname"] = 0;
+        }
+        return $this->createToken($user, $developer_id);
     }
+
 
     protected function _validateCreateToken($data) {
+        $developer = $this->_getValue($data, "client_id");
+        if (!$this->_hasValue($developer)) {
+            return $this->errorArray("Invalid company sign in");
+        }
+
         $f = new FaceFactory();
-        //$f->considerCompareFaces($user, $data["image"]);
+        return $f->considerCompareFaces($data);
     }
 
-    protected function createToken($user) {
-        $stmt = $this->pdo->prepare("insert into token (user_id, token, type) values (?,?,'auth')");
-        $stmt->execute(array($user["user_id"], md5(uniqid())));
+    protected function createToken($user, $developer_id) {
+        $token = md5(uniqid());
+        $stmt = $this->pdo->prepare("insert into token (user_id, developer_id, permission_email, permission_firstname, permission_lastname, token, type) values (?,?,?,?,?,?,'auth')");
+        $stmt->execute(array($user["user_id"], $developer_id, $user["permission_email"], $user["permission_firstname"], $user["permission_lastname"], $token));
+
+        $stmt = $this->pdo->prepare("select * from token where token = ?");
+        $stmt->execute(array($token));
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($this->_hasValue($result)) {
+            return $result;
+        } else {
+            return $this->errorArray("Error creating token");
+        }
+    }
+
+    protected function _getDevIDByClientID($client_id) {
+        $stmt = $this->pdo->prepare("select developer_id from developer where client_id = ?");
+        $stmt->execute(array($client_id));
+        $result = $stmt->fetch(PDO::FETCH_COLUMN);
+
+        if ($this->_hasValue($result)) {
+            return $result;
+        } else {
+            return $this->errorArray("Invalid company sign-in");
+        }
     }
 
     // Convert from authorization token to access token
