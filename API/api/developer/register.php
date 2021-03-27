@@ -1,3 +1,6 @@
+<?php require("../../config/settings.php");
+?>
+
 <!DOCTYPE html>
 <html class="background-color">
 <head>
@@ -44,7 +47,7 @@
                 </div>
             </div>
         </form>
-        <div class="content" style="padding:2px 10px;display:inline-block;">Already have an account? <a href="http://localhost/identitymanagement/api/developer/login.php">Login.</a></div>
+        <div class="content" style="padding:2px 10px;display:inline-block;">Already have an account? <a href="http://<?php echo $server; ?>/api/developer/login.php">Login.</a></div>
     </div>
 </div>
 </body>

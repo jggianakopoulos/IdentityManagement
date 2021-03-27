@@ -9,12 +9,6 @@ class UserFactory extends AccountFactory {
         $this->table_id = "user_id";
     }
 
-//    public function fields() {
-//        return array(
-//            "email", "password", "first_name", "last_name"
-//        );
-//    }
-
     protected function _registerQuery($values) {
         $stmt = $this->pdo->prepare("insert into {$this->table} (email, password, first_name, last_name) values (?,?,?,?)");
         $stmt->execute(array($this->_getValue($values, "email"), $this->_getValue($values, "password"),$this->_getValue($values, "first_name"), $this->_getValue($values, "last_name")));

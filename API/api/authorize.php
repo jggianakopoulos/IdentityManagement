@@ -1,6 +1,7 @@
 <?php
 
     require("../factories/DeveloperFactory.php");
+    require("../config/settings.php");
 
     $f = new DeveloperFactory();
     if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirect_url") && $f->_hasValue($_REQUEST, "client_id") && $f->validateClientID($_REQUEST["client_id"])) {
@@ -44,6 +45,20 @@
 								<button class="btn" style="float:right;margin:8px" id='login-btn' type="button" id='continue'>Login</button>
 							</div>
 						</div>
+<!--                        <div id="permissions">-->
+<!--                            <p style="margin:10px;width:300px;">What information do you want to give to  <i>Company</i>?</p>-->
+<!--                            <div>-->
+<!--                                <input type="checkbox" name="permission" value="Email">-->
+<!--                                <label >Email</label><b/>-->
+<!--                                <input type="checkbox" name="permission" value="first_name">-->
+<!--                                <label >First Name</label><b/>-->
+<!--                                <input type="checkbox" name="permission" value="last_name">-->
+<!--                                <label >Last Name</label><b/>-->
+<!--                            </div>-->
+<!--                            <div style="margin:5px;">-->
+<!--                                <button class="btn" style="float:right;margin:8px" id='login-btn' type="button" id='continue'>Continue</button>-->
+<!--                            </div>-->
+<!--                        </div>-->
 						<div id="verify" class="hidden" style="display: flex;flex-direction:column;">
 							<div class="input-field">
 								<label for="facefile">Upload Face (Front Angle)</label>
@@ -70,15 +85,6 @@
             const snapSoundElement = document.getElementById('snapSound');
             const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
             webcam.start();
-
-            // On start
-            //  Add button to start camera. Camera and canvas hidden
-
-            //  Add button for "snap photo"
-
-            // When snap clicked, show canvas, hide camera, stop camera
-
-            // Display "take a new picture" button that -> empties canvas, hides canvas, shows camera, starts camera
 
             var picture_taken = function(e)  {
                 console.log("bbbbb");
@@ -120,16 +126,20 @@
 				var user_email = $("#email").val().trim();
 				var user_pw = $("#password").val().trim();
 
-                console.log(SHA256(user_pw));
-
-				verify_page();
-
 				$.ajax({
 					  method: "POST",
-					  url: "http://localhost/identitymanagement/api/user/login.php",
+					  url: "http://<?php echo $server; ?>/api/user/login.php",
 					  data: { email: user_email, password: SHA256(user_pw) },
 					  dataType: 'json',
-					  success: verify_page,
+					  success: function(e) {
+                          console.log(["a", e]);
+
+                          if (e["error_message"]) {
+                              console.log("error");
+                          } else {
+                              verify_page();
+                          }
+                      },
 					  error: login_page
 					})
 			};
@@ -147,21 +157,25 @@
 
 				var formData = new FormData();
                 var canvas = document.getElementById('canvas');
-				console.log(canvas.toDataURL());
 				formData.append('image', canvas.toDataURL());
 				formData.append("email", user_email);
                 formData.append("password", SHA256(user_pw));
 
 				$.ajax({
 					  method: "POST",
-					  url: "http://localhost/identitymanagement/api/user/facecheck.php",
+					  url: "http://<?php echo $server; ?>/api/user/facecheck.php",
 					  data: formData,
 					  processData:false,
 					  dataType: 'text',
 					  contentType: false,
 					  cache: false,
 					  success: function(e) {
-					  	redirect_with_token(e);
+					      if (e == "null" || e["error_message"]) {
+					          console.log(e);
+                          } else {
+					          console.log(e);
+					          redirect_with_token(e);
+                          }
 					  },
 					  enctype: 'multipart/form-data',
 					  error: function(e) {

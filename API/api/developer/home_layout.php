@@ -1,3 +1,4 @@
+<?php require("../../config/settings.php")?>
 <!DOCTYPE html>
 <html class="background-color">
 <head>
@@ -35,7 +36,7 @@
                     </div>
                 </div>
             </div>
-        <a style="padding: 2px 10px;display: inline-block;background-color: #d3d4ea;border: 1px #7d7d7d solid;border-radius: 6px;margin-top: 2px;"<a href="http://localhost/identitymanagement/api/developer/logout.php">Logout.</a>
+        <a style="padding: 2px 10px;display: inline-block;background-color: #d3d4ea;border: 1px #7d7d7d solid;border-radius: 6px;margin-top: 2px;"<a href="http://<?php echo $server; ?>/api/developer/logout.php">Logout.</a>
     </div>
 </div>
 </body>
