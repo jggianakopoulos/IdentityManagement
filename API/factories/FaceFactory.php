@@ -1,6 +1,7 @@
 <?php
 
 require_once("UserFactory.php");
+require_once("../config/settings.php");
 
 class FaceFactory extends BaseFactory {
 
@@ -8,6 +9,11 @@ class FaceFactory extends BaseFactory {
         parent::__construct();
         $this->table = "face";
         $this->table_id = "face_id";
+    }
+
+    public function testFaceRecognition($data){
+        $result = $this->faceRecognition($userfacepath.'43', $userfacepath.'43/Attempts/TrialImage.png');
+        echo $result;
     }
 
     public function considerCompareFaces($data) {
@@ -27,22 +33,23 @@ class FaceFactory extends BaseFactory {
             return $face;
         }
 
-        $new_face = $this->storeImage($image);
+        $new_face = $this->storeImage($image, $user["user_id"]);
         if ($new_face == "") {
             return $this->errorArray("Error with new image");
         }
-        $result =  $this->openCVCompare($face["path"], $new_face);
+        $result =  $this->faceRecognition($userfacepath.$user["user_id"], $new_face);
 
-        if ($result == "Same") {
+        if ($result == true) {
             return $user;
         } else {
             return $this->errorArray("Different faces");
         }
     }
 
-    protected function storeImage($image) {
-        $path = '../../assets/compare/';
-        $name = uniqid(rand(), true) . '.png';
+    protected function storeImage($image, $user) {
+        date_default_timezone_set('UTC');
+        $path = $userfacepath.$user["user_id"]."/Attempts";
+        $name = date(Ymdhis) . '.png';
         $image = $this->base64toImage($image);
 
         if (file_put_contents($path . $name, $image)) {
@@ -52,11 +59,16 @@ class FaceFactory extends BaseFactory {
         }
     }
 
-    protected function openCVCompare($face, $new_face) {
-        $command = escapeshellcmd('python ../../python/facecheck.py ' . $face . ' ' . $new_face);
+    protected function faceRecognition($compare_to, $new_face) {
+        $command = escapeshellcmd('$facerecognitionpath $compare_to $new_face');
         $output = shell_exec($command);
-        // Change this to actually give an output
-        return "Same";
+        if (str_contains($output, 'unknown_person') || str_contains($output, 'no_persons_found'))
+        {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
     protected function base64toImage($base64) {

@@ -10,8 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f060a74-344e-4225-9f1c-15296abb890b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndroidApp/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/api/user/profileupdate.php" beforeDir="false" afterPath="$PROJECT_DIR$/API/api/user/profileupdate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/config/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/API/config/settings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/factories/FaceFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/API/factories/FaceFactory.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,10 +48,20 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="StevenScottOU &lt;50970399+stevenscottou@users.noreply.github.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1nSHS9rqBlSt7Phakcpf1MF2lnW" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -58,6 +71,7 @@
   <component name="PropertiesComponent">
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_XL_API_28" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-01-25T02:13:54.859Z" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
@@ -145,6 +159,14 @@
       <option name="presentableId" value="Default" />
       <updated>1611376568161</updated>
     </task>
+    <task id="LOCAL-00001" summary="Created new settings variables for use with recognition.">
+      <created>1616977017405</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1616977017405</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -159,6 +181,10 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Created new settings variables for use with recognition." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created new settings variables for use with recognition." />
+  </component>
   <component name="WindowStateProjectService">
     <state x="469" y="266" key="#PSD" timestamp="1614312013164">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -170,6 +196,10 @@
     </state>
     <state x="669" y="106" key="#app/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1616632026403" />
     <state x="669" y="106" key="#app/0.0.1920.1040/-2560.-349.2048.1112@0.0.1920.1040" timestamp="1612732916604" />
+    <state x="1001" y="502" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1616980847316">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1001" y="502" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1400/2560.220.1920.1040/-1920.212.1920.1040@0.0.2560.1400" timestamp="1616980847316" />
     <state x="764" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1615174644793">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -193,6 +223,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="805" y="327" key="AndroidCreateXmlResourceDialog/0.0.1920.1040/-2560.-349.2048.1112@0.0.1920.1040" timestamp="1611563552778" />
+    <state x="406" y="269" width="1675" height="995" key="CommitChangelistDialog2" timestamp="1616977016598">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="406" y="269" width="1675" height="995" key="CommitChangelistDialog2/0.0.2560.1400/2560.220.1920.1040/-1920.212.1920.1040@0.0.2560.1400" timestamp="1616977016598" />
     <state x="732" y="275" key="FileChooserDialogImpl" timestamp="1616632048488">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -222,11 +256,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="460" y="167" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614311709039" />
-    <state x="659" y="120" width="714" height="801" key="find.popup" timestamp="1615579906929">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="872" y="433" key="Vcs.Push.Dialog.v2" timestamp="1616977140069">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="872" y="433" key="Vcs.Push.Dialog.v2/0.0.2560.1400/2560.220.1920.1040/-1920.212.1920.1040@0.0.2560.1400" timestamp="1616977140069" />
+    <state x="879" y="162" width="952" height="1079" key="find.popup" timestamp="1616981676240">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="659" y="120" width="714" height="801" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1615579906929" />
     <state x="659" y="120" width="585" height="801" key="find.popup/0.0.1920.1040/-2560.-349.2048.1112@0.0.1920.1040" timestamp="1612731765107" />
+    <state x="879" y="162" width="952" height="1079" key="find.popup/0.0.2560.1400/2560.220.1920.1040/-1920.212.1920.1040@0.0.2560.1400" timestamp="1616981676240" />
     <state x="687" y="373" key="psd.add.jar.dependency.panel.dimension" timestamp="1614311797796">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
