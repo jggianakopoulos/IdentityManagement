@@ -8,9 +8,66 @@
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="7f060a74-344e-4225-9f1c-15296abb890b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/group/idm2/Tasks/AbstractTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/group/idm2/Tasks/AbstractTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/Firefox Installer.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/authorize.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/devCredentials.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/dev_home.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/dev_home_layout.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/dev_login.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/dev_login_action.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/dev_logout.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/dev_register.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/dev_register_action.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/facecheck.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/login.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/passwordchange.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/profileupdate.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/redirect-success.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/register.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/sha256.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/test.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/testsite.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/updateface.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OAuth2/user.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServerCode/dbconn.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServerCode/login.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServerCode/passwordchange.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServerCode/profileupdate.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServerCode/register.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +206,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1611376568161</updated>
-      <workItem from="1617215108206" duration="482000" />
+      <workItem from="1617215108206" duration="1211000" />
     </task>
     <servers />
   </component>
