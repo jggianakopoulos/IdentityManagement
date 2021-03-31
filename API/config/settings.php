@@ -1,3 +1,3 @@
 <?php
 
-$server = "localhost/identitymanagement";
+$server = "34.69.148.52";

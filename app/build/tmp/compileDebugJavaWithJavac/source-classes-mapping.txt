@@ -1,0 +1,8 @@
+com/group/idm2/LoginActivity.java
+ com.group.idm2.LoginActivity
+com/group/idm2/MainActivity.java
+ com.group.idm2.MainActivity
+com/group/idm2/BuildConfig.java
+ com.group.idm2.BuildConfig
+com/group/idm2/HomeActivity.java
+ com.group.idm2.HomeActivity
