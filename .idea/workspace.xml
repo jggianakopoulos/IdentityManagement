@@ -38,10 +38,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f060a74-344e-4225-9f1c-15296abb890b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/API/factories/FaceFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/API/factories/FaceFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/group/idm2/Tasks/AbstractTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/group/idm2/Tasks/AbstractTask.java" afterDir="false" />
-    </list>
+    <list default="true" id="7f060a74-344e-4225-9f1c-15296abb890b" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -179,7 +176,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1611376568161</updated>
-      <workItem from="1617215108206" duration="7093000" />
+      <workItem from="1617215108206" duration="7430000" />
     </task>
     <servers />
   </component>
@@ -265,12 +262,12 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="460" y="167" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614311709039" />
-    <state x="658" y="121" width="714" height="801" key="find.popup" timestamp="1617240119347">
+    <state x="658" y="121" width="714" height="801" key="find.popup" timestamp="1617240176738">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="659" y="120" width="714" height="801" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1615579906929" />
     <state x="659" y="120" width="585" height="801" key="find.popup/0.0.1920.1040/-2560.-349.2048.1112@0.0.1920.1040" timestamp="1612731765107" />
-    <state x="658" y="121" width="714" height="801" key="find.popup/0.0.1920.1040/-2560.0.2560.1400@0.0.1920.1040" timestamp="1617240119347" />
+    <state x="658" y="121" width="714" height="801" key="find.popup/0.0.1920.1040/-2560.0.2560.1400@0.0.1920.1040" timestamp="1617240176738" />
     <state x="687" y="373" key="psd.add.jar.dependency.panel.dimension" timestamp="1614311797796">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
