@@ -57,6 +57,8 @@ class FaceFactory extends BaseFactory {
         $image = $this->base64toImage($image);
         $test["image2"] = gettype($image);
         $test["is_writable"] = is_writable($path);
+        $test["is_dir"] = file_exists($path);
+        $test["user"] = get_current_user();
         return $test;
         if (file_put_contents($path . $name, $image)) {
             return $path . $name;
