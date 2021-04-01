@@ -44,4 +44,12 @@ abstract class BaseFactory
         }
     }
 
+    protected function str_contains($string, $substring){
+        if (strpos($string, $substring) !== false) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
