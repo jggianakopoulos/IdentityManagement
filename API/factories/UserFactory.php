@@ -17,7 +17,7 @@ class UserFactory extends AccountFactory {
     public function considerPasswordChange($data) {
         $values = $this->_validatePasswordChange($data);
 
-        if (!$this->_noError($values)) {
+        if ($this->_hasError($values)) {
             return $values;
         } else {
             return $this->passwordChange($values);
@@ -61,7 +61,7 @@ class UserFactory extends AccountFactory {
     public function considerProfileUpdate($data) {
         $values = $this->_validateProfileUpdate($data);
 
-        if (!$this->_noError($values)) {
+        if ($this->_hasError($values)) {
             return $values;
         } else {
             return $this->profileUpdate($values);

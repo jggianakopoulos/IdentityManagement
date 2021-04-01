@@ -28,6 +28,10 @@ abstract class BaseFactory
         return (array_key_exists($key, $data)) ? trim($data[$key]) : "";
     }
 
+    public function _hasError($values) {
+        return array_key_exists("error_message", $values);
+    }
+
     public function _noError($values) {
         return !array_key_exists("error_message", $values);
     }
@@ -41,6 +45,14 @@ abstract class BaseFactory
             return $dev;
         } else {
             return null;
+        }
+    }
+
+    protected function str_contains($string, $substring){
+        if (strpos($string, $substring) !== false) {
+            return true;
+        } else {
+            return false;
         }
     }
 

@@ -35,7 +35,7 @@ public class AbstractTask extends AsyncTask<String, Void, String> {
         this.actionWord = "action";
         this.script = "test";
         this.sharedPreferences = context.getSharedPreferences("preferences",MODE_PRIVATE);
-        this.server = "10.0.2.2";
+        this.server = "34.69.148.52";
     }
 
     public RequestBody getRequestBody() {
@@ -48,7 +48,7 @@ public class AbstractTask extends AsyncTask<String, Void, String> {
 
         try{
 
-            String link = "http://" + this.server + "/identitymanagement/api/user/" + this.script + ".php";
+            String link = "http://" + this.server + "/api/user/" + this.script + ".php";
             OkHttpClient client = new OkHttpClient.Builder()
                     .build();
 

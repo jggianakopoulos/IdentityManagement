@@ -3,8 +3,8 @@ class Connection {
 
     private $host = "localhost";
     private $db_name = "identity";
-    private $username = "root";
-    private $password = "";
+    private $username = "IMApp";
+    private $password = "t!5@m9N5QFAv8UWE";
     public $pdo;
 
     public function __construct(){

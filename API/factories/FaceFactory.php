@@ -13,7 +13,7 @@ class FaceFactory extends BaseFactory {
     public function considerCompareFaces($data) {
         $user = $this->checkFaceData($data);
 
-        if (!$this->_noError($user)) {
+        if ($this->_hasError($user)) {
             return $user;
         }
 
@@ -21,29 +21,33 @@ class FaceFactory extends BaseFactory {
     }
 
     protected function compareFaces($user, $image) {
-        $face = $this->getUserFace($user["user_id"]);
+        $userdatapath = "/var/www/idm/API/assets/userdata/";
+        $userfacepath = $userdatapath . "faces/";
+//        $face = $this->getUserFace($user["user_id"]);
+//
+//        if ($this->_hasError($face)) {
+//            return $face;
+//        }
 
-        if (!$this->_noError($face)) {
-            return $face;
-        }
+        $new_face = $this->storeImage($this->base64toImage($image), $user["user_id"]);
 
-        $new_face = $this->storeImage($image);
         if ($new_face == "") {
             return $this->errorArray("Error with new image");
         }
-        $result =  $this->openCVCompare($face["path"], $new_face);
+        $result = $this->faceRecognition($userfacepath . $user["user_id"], $new_face);
 
-        if ($result == "Same") {
+        if ($result) {
             return $user;
         } else {
             return $this->errorArray("Different faces");
         }
     }
 
-    protected function storeImage($image) {
-        $path = '../../assets/compare/';
-        $name = uniqid(rand(), true) . '.png';
-        $image = $this->base64toImage($image);
+    protected function storeImage($image, $user) {
+        $userfacepath = "/var/www/idm/API/assets/userdata/faces/";
+        date_default_timezone_set('UTC');
+        $path = $userfacepath . $user["user_id"]."/Attempts/";
+        $name = date("Ymdhis") . '.png';
 
         if (file_put_contents($path . $name, $image)) {
             return $path . $name;
@@ -52,11 +56,27 @@ class FaceFactory extends BaseFactory {
         }
     }
 
-    protected function openCVCompare($face, $new_face) {
-        $command = escapeshellcmd('python ../../python/facecheck.py ' . $face . ' ' . $new_face);
+    protected function faceRecognition($compare_to, $new_face) {
+        $facerecognitionpath = "/home/steverobertscott/.virtualenvs/dlib/bin/face_recognition";
+        $command = escapeshellcmd($facerecognitionpath . " " . $compare_to . " " . $new_face);
         $output = shell_exec($command);
-        // Change this to actually give an output
-        return "Same";
+
+        if ($this->str_contains($output, 'unknown_person') || $this->str_contains($output, 'no_persons_found'))
+        {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    protected function str_contains($string, $substring){
+        if (strpos($string, $substring) !== false) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     protected function base64toImage($base64) {
@@ -78,7 +98,7 @@ class FaceFactory extends BaseFactory {
     public function considerUpdate($data) {
         $values = $this->checkFaceData($data);
 
-        if (!$this->_noError($values)) {
+        if ($this->_hasError($values)) {
             return $values;
         }
 
@@ -99,7 +119,7 @@ class FaceFactory extends BaseFactory {
         if (!$image) {
             return $this->errorArray("Invalid image uploaded");
         }
-        $path = '../../assets/user' . $user["user_id"];
+        $path = '../../assets/userdata' . $user["user_id"];
 
         $dir = true;
         if (!file_exists($path)) {
@@ -138,7 +158,7 @@ class FaceFactory extends BaseFactory {
 //    protected function getUserFaceFile($user_id) {
 //        $face = $this->getUserFace($user_id);
 //
-//        if (!$this->_noError($face)) {
+//        if ($this->_hasError($face)) {
 //            return $face;
 //        }
 //
