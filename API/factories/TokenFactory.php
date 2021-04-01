@@ -57,7 +57,7 @@ class TokenFactory extends BaseFactory
         if ($this->_hasValue($result)) {
             return $result;
         } else {
-            return $this->errorArray("Error creating token");
+            return $this->errorArray(array("user" => $user, $developer_id => $developer_id));
         }
     }
 

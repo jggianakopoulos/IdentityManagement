@@ -28,7 +28,8 @@ class FaceFactory extends BaseFactory {
         if (!$this->_noError($face)) {
             return $face;
         }
-         $new_face = $this->storeImage($image, $user["user_id"]);
+
+        $new_face = $this->storeImage($image, $user["user_id"]);
 
         if ($new_face == "") {
             return $this->errorArray("Error with new image");
