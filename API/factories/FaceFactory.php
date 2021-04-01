@@ -21,7 +21,7 @@ class FaceFactory extends BaseFactory {
     }
 
     protected function compareFaces($user, $image) {
-        $userdatapath = "/var/www/html/idm/assets/userdata/";
+        $userdatapath = "/var/www/idm/API/assets/userdata/";
         $userfacepath = $userdatapath . "faces/";
 //        $face = $this->getUserFace($user["user_id"]);
 //
@@ -44,7 +44,7 @@ class FaceFactory extends BaseFactory {
     }
 
     protected function storeImage($image, $user) {
-        $userfacepath = "/var/www/html/idm/assets/userdata/faces/";
+        $userfacepath = "/var/www/idm/API/assets/userdata/faces/";
         date_default_timezone_set('UTC');
         $path = $userfacepath . $user["user_id"]."/Attempts/";
         $name = date("Ymdhis") . '.png';

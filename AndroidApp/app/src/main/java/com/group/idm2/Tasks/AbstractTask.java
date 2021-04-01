@@ -48,7 +48,7 @@ public class AbstractTask extends AsyncTask<String, Void, String> {
 
         try{
 
-            String link = "http://" + this.server + "/idm/api/user/" + this.script + ".php";
+            String link = "http://" + this.server + "/api/user/" + this.script + ".php";
             OkHttpClient client = new OkHttpClient.Builder()
                     .build();
 
