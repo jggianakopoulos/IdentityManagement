@@ -23,11 +23,11 @@ class FaceFactory extends BaseFactory {
     protected function compareFaces($user, $image) {
         $userdatapath = "/var/www/html/idm/assets/userdata/";
         $userfacepath = $userdatapath . "faces/";
-        $face = $this->getUserFace($user["user_id"]);
-
-        if ($this->_hasError($face)) {
-            return $face;
-        }
+//        $face = $this->getUserFace($user["user_id"]);
+//
+//        if ($this->_hasError($face)) {
+//            return $face;
+//        }
 
         $new_face = $this->storeImage($image, $user["user_id"]);
 
@@ -119,7 +119,7 @@ class FaceFactory extends BaseFactory {
         if (!$image) {
             return $this->errorArray("Invalid image uploaded");
         }
-        $path = '../../assets/user' . $user["user_id"];
+        $path = '../../assets/userdata' . $user["user_id"];
 
         $dir = true;
         if (!file_exists($path)) {
