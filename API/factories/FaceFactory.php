@@ -30,7 +30,7 @@ class FaceFactory extends BaseFactory {
 //        }
 
         $new_face = $this->storeImage($image, $user["user_id"]);
-        return $this->errorArray($new_face);
+//        return $this->errorArray($new_face);
         if ($new_face == "") {
             return $this->errorArray("Error with new image");
         }
@@ -50,16 +50,16 @@ class FaceFactory extends BaseFactory {
         $path = $userfacepath . $user["user_id"]."/Attempts/";
         $name = date("Ymdhis") . '.png';
 
-        $test["name"] = $name;
-        $test["path"] = $path . $name;
-        $test["image1"] = gettype($image);
+//        $test["name"] = $name;
+//        $test["path"] = $path . $name;
+//        $test["image1"] = gettype($image);
+//
+//        $image = $this->base64toImage($image);
+//        $test["image2"] = gettype($image);
+//        $test["is_writable"] = is_writable($path);
+//        $test["is_dir"] = file_exists($path);
+//        $test["user"] = get_current_user();
 
-        $image = $this->base64toImage($image);
-        $test["image2"] = gettype($image);
-        $test["is_writable"] = is_writable($path);
-        $test["is_dir"] = file_exists($path);
-        $test["user"] = get_current_user();
-        return $test;
         if (file_put_contents($path . $name, $image)) {
             return $path . $name;
         } else {
