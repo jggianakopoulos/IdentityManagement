@@ -28,6 +28,10 @@ abstract class BaseFactory
         return (array_key_exists($key, $data)) ? trim($data[$key]) : "";
     }
 
+    public function _hasError($values) {
+        return array_key_exists("error_message", $values);
+    }
+
     public function _noError($values) {
         return !array_key_exists("error_message", $values);
     }

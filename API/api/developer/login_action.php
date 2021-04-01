@@ -5,7 +5,7 @@
 	$df = new DeveloperFactory();
 	$dev = $df->considerLogin($_REQUEST);
 
-   if (is_null($dev) || !$df->_noError($dev)) {
+   if (is_null($dev) || $df->_hasError($dev)) {
         header("Location: http://$server/api/developer/login.php");
    } else {
    		session_start();

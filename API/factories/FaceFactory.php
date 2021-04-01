@@ -13,7 +13,7 @@ class FaceFactory extends BaseFactory {
     public function considerCompareFaces($data) {
         $user = $this->checkFaceData($data);
 
-        if (!$this->_noError($user)) {
+        if ($this->_hasError($user)) {
             return $user;
         }
 
@@ -25,7 +25,7 @@ class FaceFactory extends BaseFactory {
         $userfacepath = $userdatapath . "faces/";
         $face = $this->getUserFace($user["user_id"]);
 
-        if (!$this->_noError($face)) {
+        if ($this->_hasError($face)) {
             return $face;
         }
 
@@ -98,7 +98,7 @@ class FaceFactory extends BaseFactory {
     public function considerUpdate($data) {
         $values = $this->checkFaceData($data);
 
-        if (!$this->_noError($values)) {
+        if ($this->_hasError($values)) {
             return $values;
         }
 
@@ -158,7 +158,7 @@ class FaceFactory extends BaseFactory {
 //    protected function getUserFaceFile($user_id) {
 //        $face = $this->getUserFace($user_id);
 //
-//        if (!$this->_noError($face)) {
+//        if ($this->_hasError($face)) {
 //            return $face;
 //        }
 //

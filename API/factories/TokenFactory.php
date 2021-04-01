@@ -16,7 +16,11 @@ class TokenFactory extends BaseFactory
         $permissions = $this->_getValue($data, "permissions");
         $developer_id = $this->_getDevIDByClientID($data["client_id"]);
 
-        if (is_array($developer_id) && !$this->_noError($developer_id)) {
+        if ($this->_hasError($user)) {
+            return $user;
+        }
+
+        if (is_array($developer_id) && $this->_hasError($developer_id)) {
             return $developer_id;
         }
 
@@ -77,7 +81,7 @@ class TokenFactory extends BaseFactory
     public function attemptRetrieveAccessToken($data) {
         $token = $this->_validateTokenData($data, "auth");
 
-        if (!$this->_noError($token)) {
+        if ($this->_hasError($token)) {
             return $token;
         }
 
@@ -124,7 +128,7 @@ class TokenFactory extends BaseFactory
     public function attemptGetUserData($data) {
         $token = $this->_validateTokenData($data, "access");
 
-        if (!$this->_noError($token)) {
+        if ($this->_hasError($token)) {
             return $token;
         }
 

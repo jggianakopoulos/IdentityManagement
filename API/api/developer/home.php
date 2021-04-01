@@ -17,7 +17,7 @@ if (is_null($_SESSION) || !array_key_exists("password", $_SESSION) || !array_key
         "password" => $password
     ));
 
-    if (!$df->_noError($dev)) {
+    if ($df->_hasError($dev)) {
         $error_message = $dev["error_message"];
     } else {
         $_SESSION["company"] = $dev["company"];
