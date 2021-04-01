@@ -30,7 +30,7 @@ class FaceFactory extends BaseFactory {
 //        }
 
         $new_face = $this->storeImage($image, $user["user_id"]);
-
+        return $this->errorArray($new_face);
         if ($new_face == "") {
             return $this->errorArray("Error with new image");
         }
@@ -44,11 +44,19 @@ class FaceFactory extends BaseFactory {
     }
 
     protected function storeImage($image, $user) {
+        $test = array();
         $userfacepath = "/var/www/idm/API/assets/userdata/faces/";
         date_default_timezone_set('UTC');
         $path = $userfacepath . $user["user_id"]."/Attempts/";
         $name = date("Ymdhis") . '.png';
+
+        $test["name"] = $name;
+        $test["path"] = $path . $name;
+        $test["image1"] = gettype($image);
+
         $image = $this->base64toImage($image);
+        $test["image2"] = gettype($image);
+        return $test;
         if (file_put_contents($path . $name, $image)) {
             return $path . $name;
         } else {
