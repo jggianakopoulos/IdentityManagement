@@ -58,8 +58,8 @@ public class CameraActivity extends AbstractActivity implements SurfaceHolder.Ca
                 System.out.println(data);
                 try {
                     Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
-                    new FaceTask(getApplicationContext(), sharedPreferences.getString("email", ""), sharedPreferences.getString("password", ""),bitmap).execute();
-
+                    new FaceTask(CameraActivity.this, sharedPreferences.getString("email", ""), sharedPreferences.getString("password", ""),bitmap).execute();
+                    finish();
                 } catch (Exception e) {
                     showToast(getApplicationContext(), "An error occurred when taking your picture. Please try again");
                     e.printStackTrace();
@@ -70,8 +70,6 @@ public class CameraActivity extends AbstractActivity implements SurfaceHolder.Ca
 
     public void captureImage(View v) throws IOException {
         System.out.println("capture");
-
-
         camera.takePicture(null, null, jpegCallback);
     }
 

@@ -18,6 +18,7 @@ public class FaceTask extends AbstractTask {
         this.image = image;
         this.script = "updateface";
         this.actionWord = "face update";
+        this.goHome = false;
     }
 
     public RequestBody getRequestBody() {
@@ -34,6 +35,11 @@ public class FaceTask extends AbstractTask {
         ByteArrayOutputStream byteArrayOS = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOS);
         return Base64.encodeToString(byteArrayOS.toByteArray(), Base64.NO_WRAP);
+    }
+
+    protected void onPostExecute(String result) {
+
+        super.onPostExecute(result);
     }
 
 
