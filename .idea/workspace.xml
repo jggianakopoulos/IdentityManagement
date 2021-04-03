@@ -40,7 +40,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7f060a74-344e-4225-9f1c-15296abb890b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/factories/FaceFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/API/factories/FaceFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AndroidApp/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/group/idm2/Activities/FaceActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/group/idm2/Activities/FaceActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +180,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1611376568161</updated>
-      <workItem from="1617215108206" duration="9778000" />
+      <workItem from="1617215108206" duration="11185000" />
     </task>
     <servers />
   </component>
