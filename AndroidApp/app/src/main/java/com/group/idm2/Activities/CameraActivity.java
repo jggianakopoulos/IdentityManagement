@@ -38,6 +38,8 @@ public class CameraActivity extends AbstractActivity implements SurfaceHolder.Ca
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        System.out.println("on create");
+
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_camera);
@@ -51,25 +53,31 @@ public class CameraActivity extends AbstractActivity implements SurfaceHolder.Ca
 
         jpegCallback = new PictureCallback() {
             public void onPictureTaken(byte[] data, Camera camera) {
+                System.out.println("picture taken");
+
                 System.out.println(data);
                 try {
                     Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
                     new FaceTask(getApplicationContext(), sharedPreferences.getString("email", ""), sharedPreferences.getString("password", ""),bitmap).execute();
+
                 } catch (Exception e) {
                     showToast(getApplicationContext(), "An error occurred when taking your picture. Please try again");
                     e.printStackTrace();
                 }
-                surfaceDestroyed(surfaceHolder);
             }
         };
     }
 
     public void captureImage(View v) throws IOException {
+        System.out.println("capture");
+
 
         camera.takePicture(null, null, jpegCallback);
     }
 
     public void refreshCamera() {
+        System.out.println("refresh");
+
         if (surfaceHolder.getSurface() == null) {
 
             return;
@@ -92,11 +100,13 @@ public class CameraActivity extends AbstractActivity implements SurfaceHolder.Ca
     }
 
     public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
-
+        System.out.println("surface changed");
         refreshCamera();
     }
 
     public void surfaceCreated(SurfaceHolder holder) {
+        System.out.println("surface created");
+
         try {
 
             camera = Camera.open();

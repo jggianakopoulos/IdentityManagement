@@ -41,9 +41,10 @@ public class FaceActivity extends AbstractActivity {
 
         if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_REQUEST_CODE);
+        } else {
+            Intent send = new Intent(this, CameraActivity.class);
+            this.startActivity(send);
         }
-        Intent send = new Intent(this, CameraActivity.class);
-        this.startActivity(send);
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -53,6 +54,8 @@ public class FaceActivity extends AbstractActivity {
                 showToast(this, "Camera Permission has been granted");
             } else {
                showToast(this, "Camera permission has been denied. You cannot access this feature without approving it.");
+                Intent send = new Intent(this, CameraActivity.class);
+                this.startActivity(send);
             }
         }
     }
