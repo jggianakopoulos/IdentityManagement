@@ -107,7 +107,7 @@ public class CameraActivity extends AbstractActivity implements SurfaceHolder.Ca
 
         try {
 
-            camera = Camera.open();
+            camera = Camera.open(Camera.CameraInfo.CAMERA_FACING_FRONT);
         } catch (RuntimeException e) {
 
             System.err.println(e);
