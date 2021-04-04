@@ -38,7 +38,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="7f060a74-344e-4225-9f1c-15296abb890b" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="7f060a74-344e-4225-9f1c-15296abb890b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+>>>>>>> 4795f5cbc61d10ed1687e4caadbdeef770538959
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,7 +97,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../wamp64/www/identitymanagement" />
     <property name="memory.settings.postsync.last.time.stamp" value="1611525898009" />
     <property name="project.structure.last.edited" value="Dependencies" />
     <property name="project.structure.proportion" value="0.17" />
@@ -176,8 +182,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1611376568161</updated>
+<<<<<<< HEAD
       <workItem from="1617215108206" duration="11185000" />
       <workItem from="1617432704903" duration="358000" />
+=======
+      <workItem from="1617215108206" duration="9778000" />
+      <workItem from="1617480369444" duration="887000" />
+>>>>>>> 4795f5cbc61d10ed1687e4caadbdeef770538959
     </task>
     <servers />
   </component>
@@ -230,10 +241,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="805" y="327" key="AndroidCreateXmlResourceDialog/0.0.1920.1040/-2560.-349.2048.1112@0.0.1920.1040" timestamp="1611563552778" />
-    <state x="732" y="275" key="FileChooserDialogImpl" timestamp="1616632048488">
+    <state x="732" y="275" key="FileChooserDialogImpl" timestamp="1617480388872">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="732" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1616632048488" />
+    <state x="732" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1617480388872" />
     <state x="732" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-2560.-349.2048.1112@0.0.1920.1040" timestamp="1611378548113" />
     <state width="936" height="50" key="GridCell.Tab.0.bottom" timestamp="1615579961046">
       <screen x="0" y="0" width="1920" height="1040" />
