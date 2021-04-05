@@ -17,8 +17,7 @@ class TokenFactory extends BaseFactory
         return $this->getTokenUser($token, $secret, "auth");
     }
     protected function getTokenUser($authtoken, $secret, $type) {
-        $stmt = $this->pdo->prepare("select token.*, user.* from token join developer using (developer_id) join use
-r using (user_id) where token.token = ? and token.type = ? and developer.client_secret = ?");
+        $stmt = $this->pdo->prepare("select token.*, user.* from token join developer using (developer_id) join user using (user_id) where token.token = ? and token.type = ? and developer.client_secret = ?");
         $stmt->execute(array($authtoken, $type, $secret));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($this->_hasValue($result)) {
