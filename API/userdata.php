@@ -23,10 +23,12 @@
 <link rel="stylesheet" type="text/css" href="assets/styles/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="assets/styles/util.css">
 <link rel="stylesheet" type="text/css" href="assets/styles/main.css">
-<head>
+<head>i
     <title>Welcome</title>
     <script>
         console.log(<?php echo json_encode($data);?>);
+        console.log(<?php echo json_encode($_REQUEST);?>);
+
     </script>
 </head>
 
