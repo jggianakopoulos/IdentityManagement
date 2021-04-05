@@ -5,17 +5,17 @@
     if ($data["permission_firstname"] == 1) {
         $first = $data["first_name"];
     } else {
-        $first = "";
+        $first = "Not shared";
     }
     if ($data["permission_lastname"] == 1) {
         $last = $data["last_name"];
     } else {
-        $last = "";
+        $last = "Not shared";
     }
     if ($data["permission_email"] == 1) {
         $email = $data["email"];
     } else {
-        $email = "";
+        $email = "Not shared";
     }
 ?>
 
@@ -56,37 +56,13 @@
 					</span>
                 <div>
 						<span class="userdatatxt">
-							Email:
-							<?php
-                            if ($email != ''){
-                                echo $email;
-                            }
-                            else{
-                                echo 'None';
-                            }
-                            ?><br>
+							Email: <?php echo $email;?><br>
 						</span>
                     <span class="userdatatxt">
-							First Name:
-							<?php
-                            if ($first != ''){
-                                echo $first;
-                            }
-                            else{
-                                echo 'None';
-                            }
-                            ?><br>
+							First Name: <?php echo $first;?><br>
 						</span>
                     <span class="userdatatxt">
-							Last Name:
-							<?php
-                            if ($last != ''){
-                                echo $last;
-                            }
-                            else{
-                                echo 'None';
-                            }
-                            ?><br>
+							Last Name: <?php echo $last;?><br>
 						</span>
                 </div>
             </form>
