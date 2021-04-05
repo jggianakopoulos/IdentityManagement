@@ -23,7 +23,7 @@
 <link rel="stylesheet" type="text/css" href="assets/styles/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="assets/styles/util.css">
 <link rel="stylesheet" type="text/css" href="assets/styles/main.css">
-<head>i
+<head>
     <title>Welcome</title>
     <script>
         console.log(<?php echo json_encode($data);?>);
