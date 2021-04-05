@@ -1,22 +1,22 @@
 <?php
-require("factories/TokenFactory.php");
-$f = new TokenFactory();
-$data =  $f->getDataFromToken($_REQUEST);
-if ($data["permission_firstname"] == 1) {
-    $first = $data["first_name"];
-} else {
-    $first = "";
-}
-if ($data["permission_lastname"] == 1) {
-    $last = $data["last_name"];
-} else {
-    $last = "";
-}
-if ($data["permission_email"] == 1) {
-    $last = $data["email"];
-} else {
-    $last = "";
-}
+    require("factories/TokenFactory.php");
+    $f = new TokenFactory();
+    $data =  $f->getDataFromToken($_REQUEST);
+    if ($data["permission_firstname"] == 1) {
+        $first = $data["first_name"];
+    } else {
+        $first = "";
+    }
+    if ($data["permission_lastname"] == 1) {
+        $last = $data["last_name"];
+    } else {
+        $last = "";
+    }
+    if ($data["permission_email"] == 1) {
+        $email = $data["email"];
+    } else {
+        $email = "";
+    }
 ?>
 <!DOCTYPE html>
 <html style="background-color:grey;">
