@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.group.idm2.Activities.FaceActivity;
 import com.group.idm2.Activities.HomeActivity;
 
 import org.json.JSONObject;
@@ -111,10 +112,21 @@ public class AbstractTask extends AsyncTask<String, Void, String> {
             } else {
                 System.out.println(json.toString());
                 Toast.makeText(this.context,"An error occurred with your " + this.actionWord,Toast.LENGTH_SHORT).show();
+                if (!this.goHome) {
+                    Intent send = new Intent(this.context, FaceActivity.class);
+                    context.startActivity(send);
+
+                }
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
             Toast.makeText(this.context,"An error occurred with your " + this.actionWord,Toast.LENGTH_SHORT).show();
+
+            if (!this.goHome) {
+                Intent send = new Intent(this.context, FaceActivity.class);
+                context.startActivity(send);
+
+            }
         }
     }
 }

@@ -3,6 +3,8 @@ package com.group.idm2.Tasks;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Base64;
+import android.widget.Toast;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 
@@ -38,8 +40,8 @@ public class FaceTask extends AbstractTask {
     }
 
     protected void onPostExecute(String result) {
-
         super.onPostExecute(result);
+        Toast.makeText(this.context,"Success! Your face capture can now be used to sign in.",Toast.LENGTH_SHORT).show();
     }
 
 

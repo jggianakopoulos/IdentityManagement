@@ -27,10 +27,7 @@ public class FaceActivity extends AbstractActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_face);
-
         face = (Button)findViewById(R.id.face);
-        spinner = (ProgressBar)findViewById(R.id.progressBar);
-        spinner.setVisibility(View.GONE);
 
         sharedPreferences = this.getSharedPreferences("preferences",MODE_PRIVATE);
     }
@@ -43,7 +40,6 @@ public class FaceActivity extends AbstractActivity {
         if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_REQUEST_CODE);
         } else {
-            spinner.setVisibility(View.VISIBLE);
             Intent send = new Intent(this, CameraActivity.class);
             this.startActivity(send);
         }

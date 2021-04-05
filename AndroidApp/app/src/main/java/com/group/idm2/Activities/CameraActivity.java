@@ -59,6 +59,7 @@ public class CameraActivity extends AbstractActivity implements SurfaceHolder.Ca
                 try {
                     Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
                     new FaceTask(CameraActivity.this, sharedPreferences.getString("email", ""), sharedPreferences.getString("password", ""),bitmap).execute();
+                    showToast(getApplicationContext(), "Your capture is being processed. Please Wait...");
                     finish();
                 } catch (Exception e) {
                     showToast(getApplicationContext(), "An error occurred when taking your picture. Please try again");
@@ -108,6 +109,7 @@ public class CameraActivity extends AbstractActivity implements SurfaceHolder.Ca
         try {
 
             camera = Camera.open(Camera.CameraInfo.CAMERA_FACING_FRONT);
+            camera.setDisplayOrientation(90);
         } catch (RuntimeException e) {
 
             System.err.println(e);
