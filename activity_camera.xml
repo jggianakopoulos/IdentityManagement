@@ -1,0 +1,39 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.group.idm2.Activities.CameraActivity">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="677dp">
+
+        <SurfaceView
+            android:id="@+id/surfaceView"
+            android:layout_width="match_parent"
+            android:layout_height="607dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="373dp"
+            android:layout_height="77dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:onClick="captureImage"
+            android:text="Capture" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icons8_round_500" />
+
+    </FrameLayout>
+
+
+</LinearLayout>
