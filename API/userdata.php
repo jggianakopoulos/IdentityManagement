@@ -18,28 +18,90 @@
         $email = "";
     }
 ?>
+
 <!DOCTYPE html>
-<html style="background-color:grey;">
-    <head>
-        <script>
-            console.log(<?php echo json_encode($data);?>);
-        </script>
-    </head>
-    <body>
-    <div style="width: 1000px;text-align: center;margin: auto;display: flex;flex-direction: column;justify-content: center;">
-        <h1>Welcome! Your information is displayed below.</h1>
-        <div style="display: flex;margin: 10px 75px;flex-direction: row;">
-            <div style="width: 500px;">Email</div>
-            <div><?php echo $email; ?></div>
-        </div>
-        <div style="display: flex;margin: 10px 75px;flex-direction: row;">
-            <div style="width: 500px;">First Name</div>
-            <div><?php echo $first; ?></div>
-        </div>
-        <div style="display: flex;margin: 10px 75px;flex-direction: row;">
-            <div style="width: 500px;">Last Name</div>
-            <div><?php echo $last; ?></div>
+<link rel="stylesheet" type="text/css" href="assets/styles/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="assets/styles/util.css">
+<link rel="stylesheet" type="text/css" href="assets/styles/main.css">
+<head>
+    <title>Welcome</title>
+    <script>
+        console.log(<?php echo json_encode($data);?>);
+    </script>
+</head>
+
+<body>
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+            <form class="login100-form validate-form flex-sb flex-w">
+					<span class="login100-form-title p-b-53">
+						Welcome,
+						<?php
+                        if ($first!=''){
+                            echo $first;
+                        }
+                        elseif ($email != ''){
+                            echo $email;
+                        }
+                        else{
+                            echo "User";
+                        }
+                        ?>
+					</span>
+                <span class="txt3">
+					Identity Management has shared this information with us:
+					</span>
+                <div>
+						<span class="userdatatxt">
+							Email:
+							<?php
+                            if ($email != ''){
+                                echo $email;
+                            }
+                            else{
+                                echo 'None';
+                            }
+                            ?><br>
+						</span>
+                    <span class="userdatatxt">
+							First Name:
+							<?php
+                            if ($first != ''){
+                                echo $first;
+                            }
+                            else{
+                                echo 'None';
+                            }
+                            ?><br>
+						</span>
+                    <span class="userdatatxt">
+							Last Name:
+							<?php
+                            if ($last != ''){
+                                echo $last;
+                            }
+                            else{
+                                echo 'None';
+                            }
+                            ?><br>
+						</span>
+                </div>
+            </form>
         </div>
     </div>
-    </body>
+</div>
+
+<script src="assets/styles/jquery-3.js"></script>
+<script src="assets/styles/bootstrap.js"></script>
+<script src="assets/styles/main.js"></script>
+<script async="" src="assets/styles/js"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23581568-13');
+</script>
+</body>
 </html>
