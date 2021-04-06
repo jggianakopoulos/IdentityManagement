@@ -2,4 +2,4 @@
 
 require("../../factories/FaceFactory.php");
 $f = new FaceFactory();
-echo json_encode($f->considerUpdate($_REQUEST));
+echo json_encode($_REQUEST);

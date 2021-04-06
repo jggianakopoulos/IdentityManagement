@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.group.idm2.Activities.FaceActivity;
 import com.group.idm2.Activities.HomeActivity;
 
 import org.json.JSONObject;
@@ -27,6 +28,7 @@ public class AbstractTask extends AsyncTask<String, Void, String> {
     public Context context;
     public String email, password, actionWord, script, server;
     public SharedPreferences sharedPreferences;
+    public boolean goHome;
 
     public AbstractTask(Context context, String email, String password) {
         this.context = context;
@@ -36,6 +38,7 @@ public class AbstractTask extends AsyncTask<String, Void, String> {
         this.script = "test";
         this.sharedPreferences = context.getSharedPreferences("preferences",MODE_PRIVATE);
         this.server = "34.69.148.52";
+        this.goHome = true;
     }
 
     public RequestBody getRequestBody() {
@@ -102,15 +105,28 @@ public class AbstractTask extends AsyncTask<String, Void, String> {
                 editor.putString("password", json.getString("password"));
                 editor.apply();
 
-                Intent send = new Intent(this.context, HomeActivity.class);
-                context.startActivity(send);
+                if (this.goHome) {
+                    Intent send = new Intent(this.context, HomeActivity.class);
+                    context.startActivity(send);
+                }
             } else {
                 System.out.println(json.toString());
                 Toast.makeText(this.context,"An error occurred with your " + this.actionWord,Toast.LENGTH_SHORT).show();
+                if (!this.goHome) {
+                    Intent send = new Intent(this.context, FaceActivity.class);
+                    context.startActivity(send);
+
+                }
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
             Toast.makeText(this.context,"An error occurred with your " + this.actionWord,Toast.LENGTH_SHORT).show();
+
+            if (!this.goHome) {
+                Intent send = new Intent(this.context, FaceActivity.class);
+                context.startActivity(send);
+
+            }
         }
     }
 }

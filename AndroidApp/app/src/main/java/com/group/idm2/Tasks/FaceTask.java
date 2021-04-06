@@ -3,6 +3,8 @@ package com.group.idm2.Tasks;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Base64;
+import android.widget.Toast;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 
@@ -18,6 +20,7 @@ public class FaceTask extends AbstractTask {
         this.image = image;
         this.script = "updateface";
         this.actionWord = "face update";
+        this.goHome = false;
     }
 
     public RequestBody getRequestBody() {
@@ -34,6 +37,11 @@ public class FaceTask extends AbstractTask {
         ByteArrayOutputStream byteArrayOS = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOS);
         return Base64.encodeToString(byteArrayOS.toByteArray(), Base64.NO_WRAP);
+    }
+
+    protected void onPostExecute(String result) {
+        super.onPostExecute(result);
+        Toast.makeText(this.context,"Success! Your face capture can now be used to sign in.",Toast.LENGTH_SHORT).show();
     }
 
 

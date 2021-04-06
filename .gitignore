@@ -7,6 +7,12 @@
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
+/API/.idea/caches
+/API/.idea/libraries
+/API/.idea/modules.xml
+/API/.idea/workspace.xml
+/API/.idea/navEditor.xml
+/API/.idea/assetWizardSettings.xml
 .DS_Store
 /build
 /captures
