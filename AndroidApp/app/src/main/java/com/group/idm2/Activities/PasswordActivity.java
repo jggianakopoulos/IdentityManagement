@@ -7,19 +7,19 @@ import android.widget.EditText;
 import com.group.idm2.R;
 import com.group.idm2.Tasks.PasswordTask;
 
-public class PasswordActivity extends AbstractActivity {
+public class PasswordActivity extends DrawerActivity {
 
     private EditText passwordET, newPasswordET, confirmPasswordET;
     private SharedPreferences sharedPreferences;
 
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password);
-
+        header = "Password Change";
         passwordET = (EditText)findViewById(R.id.passwordET);
         confirmPasswordET = (EditText)findViewById(R.id.confirmPasswordET);
         newPasswordET = (EditText)findViewById(R.id.newPasswordET);
         sharedPreferences = this.getSharedPreferences("preferences",MODE_PRIVATE);
+        super.onCreate(savedInstanceState);
     }
 
     public void update(View view) {

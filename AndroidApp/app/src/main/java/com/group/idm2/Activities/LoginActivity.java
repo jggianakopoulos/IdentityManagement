@@ -2,14 +2,20 @@ package com.group.idm2.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import com.group.idm2.Tasks.LoginTask;
 import com.group.idm2.R;
 
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 public class LoginActivity extends AbstractActivity {
+
 
     private EditText emailET, passwordET;
     private SharedPreferences sharedPreferences;
@@ -20,9 +26,6 @@ public class LoginActivity extends AbstractActivity {
         setContentView(R.layout.activity_login);
         emailET = (EditText)findViewById(R.id.emailET);
         passwordET = (EditText)findViewById(R.id.passwordET);
-//        sharedPreferences = this.getSharedPreferences("preferences",MODE_PRIVATE);
-//        emailET.setText();
-//        passwordET.setText();
     }
 
 
