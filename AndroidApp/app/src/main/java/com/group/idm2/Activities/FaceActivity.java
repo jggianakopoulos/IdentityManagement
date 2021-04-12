@@ -18,18 +18,18 @@ import com.group.idm2.R;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
-public class FaceActivity extends AbstractActivity {
+public class FaceActivity extends DrawerActivity {
     Button face;
     SharedPreferences sharedPreferences;
     private ProgressBar spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_face);
         face = (Button)findViewById(R.id.face);
-
+        header = "Update Face";
         sharedPreferences = this.getSharedPreferences("preferences",MODE_PRIVATE);
+        super.onCreate(savedInstanceState);
     }
 
     private static final int MY_CAMERA_REQUEST_CODE = 100;

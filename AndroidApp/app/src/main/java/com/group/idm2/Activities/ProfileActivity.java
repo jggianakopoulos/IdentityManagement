@@ -7,15 +7,14 @@ import android.widget.EditText;
 import com.group.idm2.R;
 import com.group.idm2.Tasks.ProfileTask;
 
-public class ProfileActivity extends AbstractActivity {
+public class ProfileActivity extends DrawerActivity {
 
     private EditText emailET, passwordET, firstNameET, lastNameET, phoneNumberET;
     private SharedPreferences sharedPreferences;
 
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
+        header = "Update Your Profile";
         emailET = (EditText)findViewById(R.id.emailET);
         passwordET = (EditText)findViewById(R.id.passwordET);
         firstNameET = (EditText)findViewById(R.id.firstNameET);
@@ -28,6 +27,7 @@ public class ProfileActivity extends AbstractActivity {
         firstNameET.setText(sharedPreferences.getString("first_name", ""));
         lastNameET.setText(sharedPreferences.getString("last_name", ""));
         phoneNumberET.setText(sharedPreferences.getString("phone_number", ""));
+        super.onCreate(savedInstanceState);
     }
 
     public void update(View view) {
