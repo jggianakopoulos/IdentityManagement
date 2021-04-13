@@ -37,7 +37,7 @@ public class AbstractTask extends AsyncTask<String, Void, String> {
         this.actionWord = "action";
         this.script = "test";
         this.sharedPreferences = context.getSharedPreferences("preferences",MODE_PRIVATE);
-        this.server = "34.69.148.52";
+        this.server = "10.0.2.2/identitymanagement";
         this.goHome = true;
     }
 
