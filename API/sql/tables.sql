@@ -10,6 +10,11 @@ create table user (
     primary key (user_id)
 );
 
+alter table user
+    add use_password tinyint(1) default 1,
+    add use_face tinyint(1) default 0,
+    add use_code tinyint(1) default 0;
+
 create table developer (
 	developer_id int not null auto_increment,
 	client_id varchar(50),

@@ -9,6 +9,51 @@ class UserFactory extends AccountFactory {
         $this->table_id = "user_id";
     }
 
+    public function considerSignInMethods($data) {
+        $settings = $this->_validateMethods($data);
+
+        if ($this->_hasError($settings)) {
+            return $settings;
+        }
+
+        $user = $this->considerLogin($data);
+
+        if ($this->_noError($user)) {
+            return $this->_updateSignInMethods($user["user_id"], $settings);
+        } else {
+            return $user;
+        }
+    }
+
+    protected function _updateSignInMethods($user_id, $settings) {
+        $stmt = $this->pdo->prepare("update user set use_password = ?, use_face = ?, use_code = ? where user_id = ?");
+        $stmt->execute(array($this->_getValue($settings, "use_password"),$this->_getValue($settings, "use_face"),$this->_getValue($settings, "use_code"), $user_id));
+
+        $user = $this->getByID($user_id);
+
+        if (is_null($user)) {
+            return $this->errorArray("Invalid credentials");
+        } else {
+            return $user;
+        }
+    }
+
+    protected function _validateMethods($data) {
+        $use_password = $this->_getValue($data, "use_password");
+        $use_face = $this->_getValue($data, "use_face");
+        $use_code = $this->_getValue($data, "use_code");
+
+        if ($this->_isNegative($use_password) && $this->_isNegative($use_face) && $this->_isNegative($use_code)) {
+            return $this->errorArray("You must enable at least one sign in method");
+        } else {
+            return array(
+                "use_password" => ($use_password == 1) ? $use_password : 0,
+                "use_face" => ($use_face == 1) ? $use_face : 0,
+                "use_code" => ($use_code == 1) ? $use_code : 0,
+            );
+        }
+    }
+
     protected function _registerQuery($values) {
         $stmt = $this->pdo->prepare("insert into {$this->table} (email, password, first_name, last_name) values (?,?,?,?)");
         $stmt->execute(array($this->_getValue($values, "email"), $this->_getValue($values, "password"),$this->_getValue($values, "first_name"), $this->_getValue($values, "last_name")));

@@ -16,7 +16,7 @@ abstract class AccountFactory extends BaseFactory {
         list($username, $password) = $this->_validateLogin($data);
 
         if (is_null($username)) {
-            return $this->errorArray("You must enter a username and password");
+            return $this->errorArray("You must enter an email and password");
         }
 
         return $this->login($username, $password);
@@ -35,8 +35,8 @@ abstract class AccountFactory extends BaseFactory {
     }
 
     protected function _validateLogin($data) {
-        $email = (array_key_exists("email", $data)) ? $data["email"] : "";
-        $password = (array_key_exists("password", $data)) ? $data["password"] : "";
+        $email = $this->_getValue($data, "email");
+        $password =$this->_getValue($data, "password");
 
         if ($this->_hasValue($email) && $this->_hasValue($password)) {
             return array($email, $password);

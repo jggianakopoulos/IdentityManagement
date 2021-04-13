@@ -32,6 +32,14 @@ abstract class BaseFactory
         return array_key_exists("error_message", $values);
     }
 
+    public function _isPositive($var) {
+        return $this->_hasValue($var) && $var != 0;
+    }
+
+    public function _isNegative($var) {
+        return !$this->_isPositive($var);
+    }
+
     public function _noError($values) {
         return !array_key_exists("error_message", $values);
     }
