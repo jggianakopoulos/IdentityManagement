@@ -15,6 +15,8 @@ alter table user
     add use_face tinyint(1) default 0,
     add use_code tinyint(1) default 0;
 
+alter table user add face_uploaded tinyint default 0;
+
 create table developer (
 	developer_id int not null auto_increment,
 	client_id varchar(50),

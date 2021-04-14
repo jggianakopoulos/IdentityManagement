@@ -1,12 +1,15 @@
 <?php
 
 require_once("AccountFactory.php");
+require_once("FaceFactory.php");
 
 class UserFactory extends AccountFactory {
+    private $ff;
     public function __construct() {
         parent::__construct();
         $this->table = "user";
         $this->table_id = "user_id";
+        $this->ff = new FaceFactory();
     }
 
     public function considerSignInMethods($data) {
@@ -150,6 +153,108 @@ class UserFactory extends AccountFactory {
             return $this->errorArray("You must fill in all required fields");
         }
 
+    }
+
+    public function emailCheck($data) {
+        $email = $this->_getValue($data, "email");
+
+        if ($this->_hasValue($email)) {
+            $user = $this->getByEmail($email);
+
+            if (is_null($user)) {
+                return $this->errorArray("A user with these credentials doesn't exist");
+            } else {
+                return $this->assembleReturnValue($user, "email", $data);
+            }
+        } else {
+            return $this->errorArray("You must provide an email");
+        }
+
+    }
+
+    public function userIDExists($user_id) {
+        $user = $this->getByID($user_id);
+        return !is_null($user);
+    }
+
+    public function passwordCheck($data) {
+        $user = $this->considerLogin($data);
+
+        if ($this->_noError($user)) {
+            return $this->assembleReturnValue($user, "password", $data);
+        } else {
+            return $user;
+        }
+    }
+
+    public function codeCheck($data) {
+        $code = $this->userCodeExists($data);
+
+        if ($this->_noError($code)) {
+            return $this->assembleReturnValue($code, "code", $data);
+        } else {
+            return $code;
+        }
+    }
+
+    public function faceCheck($data) {
+        $user = $this->ff->considerCompareFaces($data);
+        if ($this->_noError($user)) {
+            $this->assembleReturnValue($user, "face", $data);
+        } else {
+            return $user;
+        }
+    }
+
+
+    protected function assembleReturnValue($user, $source, $data) {
+        $use_password = $user["use_password"];
+        $use_code = $user["use_code"];
+        $use_face = $user['use_face'];
+
+        switch($source) {
+            case "email":
+                if ($use_password) {
+                    $next = "password";
+                } else if ($use_code) {
+                    $next = "code";
+                } else if ($use_face) {
+                    $next = "face";
+                } else {
+                    $next = "password";
+                }
+            case "password":
+                if ($use_code) {
+                    $next = "code";
+                } else if ($use_face) {
+                    $next = "face";
+                } else {
+                    //gen token;
+                }
+            case "code":
+                if ($use_face) {
+                    $next = "face";
+                } else {
+                    //gen token;
+                }
+            case "face":
+                //gen token
+            default:
+
+        }
+    }
+
+
+    public function getFaceStatus($email) {
+        $user = $this->getByEmail($email);
+
+        if (is_null($user) || $this->_isNegative($user["face_uploaded"])) {
+            return $this->errorArray("Invalid user");
+        } else if ($this->_isNegative($user["face_uploaded"])) {
+            return $this->errorArray("You must configure facial recognition in the app.");
+        } else {
+            return $user;
+        }
     }
 
 }

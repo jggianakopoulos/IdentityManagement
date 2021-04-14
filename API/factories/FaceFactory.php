@@ -3,21 +3,30 @@
 require_once("UserFactory.php");
 
 class FaceFactory extends BaseFactory {
-
+    private $uf;
     public function __construct() {
         parent::__construct();
         $this->table = "face";
         $this->table_id = "face_id";
+        $this->uf = new UserFactory();
     }
 
     public function considerCompareFaces($data) {
-        $user = $this->checkFaceData($data);
+        $user = $this->_validateCompareFaces($data);
 
         if ($this->_hasError($user)) {
             return $user;
         }
 
         return $this->compareFaces($user, $data["image"]);
+    }
+
+    protected function _validateCompareFaces($data) {
+        $valid_data = $this->_validateImage($data);
+        if ($this->_hasError($valid_data)) {
+            return $valid_data;
+        }
+        return $this->uf->getFaceStatus($data);
     }
 
     protected function compareFaces($user, $image) {
@@ -85,18 +94,8 @@ class FaceFactory extends BaseFactory {
         return base64_decode($img);
     }
 
-    protected function checkFaceData($data) {
-        $values = $this->_validateUpdate($data);
-
-        if (!array_key_exists("user_id", $values) || !($values["user_id"] > 0)) {
-            return $this->errorArray("Invalid user");
-        } else {
-            return $values;
-        }
-    }
-
     public function considerUpdate($data) {
-        $values = $this->checkFaceData($data);
+        $values = $this->_validateUpdate($data);
 
         if ($this->_hasError($values)) {
             return $values;
@@ -106,11 +105,26 @@ class FaceFactory extends BaseFactory {
     }
 
     protected function _validateUpdate($data) {
+        $valid_data = $this->_validateImage($data);
+        if ($this->_hasError($valid_data)) {
+            return $valid_data;
+        }
+
+        $user = $this->uf->considerLogin($data);
+
+        if (!array_key_exists("user_id", $user) || !($user["user_id"] > 0)) {
+            return $this->errorArray("Invalid user");
+        } else {
+            return $user;
+        }
+    }
+
+    protected function _validateImage($data) {
         if (!array_key_exists("image", $data) || !is_string($data["image"])) {
             return $this->errorArray("Invalid image uploaded");
+        } else {
+            return $data;
         }
-        $uf = new UserFactory();
-        return $uf->considerLogin($data);
     }
 
     protected function updateFace($user, $data) {
