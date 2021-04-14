@@ -103,6 +103,9 @@ public class AbstractTask extends AsyncTask<String, Void, String> {
                 editor.putString("last_name", json.getString("last_name"));
                 editor.putString("email", json.getString("email"));
                 editor.putString("password", json.getString("password"));
+                editor.putString("use_password", json.getString("use_password"));
+                editor.putString("use_face", json.getString("use_face"));
+                editor.putString("use_code", json.getString("use_code"));
                 editor.apply();
 
                 if (this.goHome) {

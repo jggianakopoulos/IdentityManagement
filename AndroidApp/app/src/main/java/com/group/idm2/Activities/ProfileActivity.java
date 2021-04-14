@@ -21,7 +21,7 @@ public class ProfileActivity extends DrawerActivity {
         lastNameET = (EditText)findViewById(R.id.lastNameET);
         phoneNumberET = (EditText)findViewById(R.id.phoneNumberET);
 
-        SharedPreferences sharedPreferences = this.getSharedPreferences("preferences",MODE_PRIVATE);
+        sharedPreferences = this.getSharedPreferences("preferences",MODE_PRIVATE);
 
         emailET.setText(sharedPreferences.getString("email", ""));
         firstNameET.setText(sharedPreferences.getString("first_name", ""));

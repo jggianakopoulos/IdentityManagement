@@ -25,6 +25,10 @@ public class SignInMethodsActivity extends DrawerActivity {
         usePassword = (CheckBox)findViewById(R.id.usePassword);
         useFace = (CheckBox)findViewById(R.id.useFace);
         useCode = (CheckBox)findViewById(R.id.useCode);
+
+        usePassword.setChecked(sharedPreferences.getString("use_password", "0").equals("1"));
+        useFace.setChecked(sharedPreferences.getString("use_face", "0").equals("1"));
+        usePassword.setChecked(sharedPreferences.getString("use_code", "0").equals("1"));
     }
 
 

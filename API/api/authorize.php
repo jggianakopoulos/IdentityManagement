@@ -27,12 +27,20 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
                     <img style="width:100px" src="user.svg">
                 </div><div style="font-family: 'Work Sans', sans-serif;font-size:20px;font-weight: 500;margin: auto;">Verify Your Identity</div>
                 <div id="error-message" class="hidden alert alert-danger" style="margin: 10px;">An error occurred with your sign-in</div>
-                <div id="login">
+                <div id="email">
                     <div>
                         <div class="input-field">
                             <label style='margin:0'for='email'>Email</label>
                             <input type='text' name='email' id='email'>
                         </div>
+                    </div>
+                    <div>
+                        <!--								<button class="btn nav-btn" onclick="window.location.href='--><?php //echo $_REQUEST["cancel_url"] ?><!--////';" type="button" >Cancel</button>-->
+                        <button class="btn nav-btn" style="float:right" id='login-btn' type="button">Login</button>
+                    </div>
+                </div>
+                <div id="password">
+                    <div>
                         <div class="input-field">
                             <label style='margin:0'for='password'>Password</label>
                             <input type='password' name='password' id='password'>
@@ -40,7 +48,7 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
                     </div>
                     <div>
                         <!--								<button class="btn nav-btn" onclick="window.location.href='--><?php //echo $_REQUEST["cancel_url"] ?><!--////';" type="button" >Cancel</button>-->
-                        <button class="btn nav-btn" style="float:right" id='login-btn' type="button">Login</button>
+                        <button class="btn nav-btn" style="float:right" id='login-btn' type="button">Continue</button>
                     </div>
                 </div>
                 <div id="permissions" class="hidden" >

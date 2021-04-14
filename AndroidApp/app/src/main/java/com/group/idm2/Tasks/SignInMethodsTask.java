@@ -21,7 +21,7 @@ public class SignInMethodsTask extends AbstractTask {
         return new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("email", this.email)
-                .addFormDataPart("password", this.getSHA(this.password))
+                .addFormDataPart("password", this.password)
                 .addFormDataPart("use_password", this.use_password)
                 .addFormDataPart("use_face", this.use_face)
                 .addFormDataPart("use_code", this.use_code)
