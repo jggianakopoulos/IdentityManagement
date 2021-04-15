@@ -3,12 +3,10 @@
 require_once("UserFactory.php");
 
 class FaceFactory extends BaseFactory {
-    private $uf;
     public function __construct() {
         parent::__construct();
         $this->table = "face";
         $this->table_id = "face_id";
-        $this->uf = new UserFactory();
     }
 
     public function considerCompareFaces($data) {
@@ -26,10 +24,17 @@ class FaceFactory extends BaseFactory {
         if ($this->_hasError($valid_data)) {
             return $valid_data;
         }
-        return $this->uf->getFaceStatus($data);
+        if ($this->_hasValue($email = $this->_getValue($data, "email"))) {
+            $uf = new UserFactory();
+            return $uf->getFaceStatus($email);
+        } else {
+            return $this->errorArray("Must include a valid email");
+        }
+
     }
 
     protected function compareFaces($user, $image) {
+        return $user;
         $userdatapath = "/var/www/idm/API/assets/userdata/";
         $userfacepath = $userdatapath . "faces/";
 //        $face = $this->getUserFace($user["user_id"]);
@@ -109,8 +114,8 @@ class FaceFactory extends BaseFactory {
         if ($this->_hasError($valid_data)) {
             return $valid_data;
         }
-
-        $user = $this->uf->considerLogin($data);
+        $uf = new UserFactory();
+        $user = $uf->considerLogin($data);
 
         if (!array_key_exists("user_id", $user) || !($user["user_id"] > 0)) {
             return $this->errorArray("Invalid user");

@@ -47,3 +47,11 @@ create table face (
     created datetime default current_timestamp,
     foreign key (user_id) references user(user_id)
 );
+
+create table logincode (
+   logincode_id int primary key auto_increment,
+   user_id int not null,
+   code varchar(50) default '',
+   created datetime default current_timestamp,
+   foreign key (user_id) references user(user_id)
+);

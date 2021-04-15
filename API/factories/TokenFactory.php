@@ -28,12 +28,12 @@ class TokenFactory extends BaseFactory
     }
 
     public function attemptCreateToken($user, $data) {
-        $user = $this->_validateCreateToken($user, $data);
+        $valid = $this->_validateCreateToken($user, $data);
         $permissions = $this->_getValue($data, "permissions");
         $developer_id = $this->_getDevIDByClientID($data["client_id"]);
 
-        if ($this->_hasError($user)) {
-            return $user;
+        if (!$valid) {
+            return $this->errorArray("Invalid user");
         }
 
         if (is_array($developer_id) && $this->_hasError($developer_id)) {

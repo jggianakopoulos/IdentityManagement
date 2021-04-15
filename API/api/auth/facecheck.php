@@ -1,7 +1,7 @@
 <?php
 
-require('../../factories/TokenFactory.php');
-$f = new TokenFactory();
+require('../../factories/UserFactory.php');
+$f = new UserFactory();
 
-echo json_encode($f->attemptCreateToken($_REQUEST));
+echo json_encode($f->faceCheck($_REQUEST));
 ?>

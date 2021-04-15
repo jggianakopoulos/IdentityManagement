@@ -45,7 +45,7 @@ abstract class AccountFactory extends BaseFactory {
         }
     }
 
-    protected function getByEmail($email) {
+    public function getByEmail($email) {
         $stmt = $this->pdo->prepare("select * from {$this->table} where email = ?");
         $stmt->execute(array($email));
         $dev = $stmt->fetch(PDO::FETCH_ASSOC);

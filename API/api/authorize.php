@@ -77,8 +77,9 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
                 <div id="code-section">
                     <div>
                         <div class="input-field">
-                            <label style='margin:0'for='code'>SignIn Code</label>
+                            <label style='margin:0'for='code'>Sign-In Code</label>
                             <input type='text' name='code' id='code'>
+                            <button class="btn nav-btn">Email Code</button>
                         </div>
                     </div>
                     <div>
@@ -119,12 +120,13 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
             window.location.replace("<?php echo $_REQUEST["redirect_url"] ?>" + "?token=" + token);
         };
 
-        var redirect_handler = function(input, error) {
+        var redirect_handler = function(input) {
+            console.log(input);
             if (input["error_message"]) {
-                show_error(error);
+                show_error(input["error_message"]);
                 console.log("error");
-            } else if (input["next_page"]) {
-                switch(input["next_page"]) {
+            } else if (input["next"]) {
+                switch(input["next"]) {
                     case "password":
                         password_page();
                         break;
@@ -166,9 +168,19 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
 
         }
 
+        var hide_error = function() {
+            $("#error-message").addClass("hidden");
+        };
+
+        var show_error = function(message) {
+            $("#error-message").text(message).removeClass("hidden");
+        }
+
         var hide_all = function() {
+            hide_error();
             $("#email-section").addClass("hidden");
             $("#permission-section").addClass("hidden");
+            $("#code-section").addClass("hidden");
             $("#password-section").addClass("hidden");
             $("#face-section").addClass("hidden");
         };
@@ -201,17 +213,10 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
             $("#submit").removeClass("hidden");
         };
 
-        var hide_error = function() {
-            $("#error-message").addClass("hidden");
-        };
-
-        var show_error = function(message) {
-            $("#error-message").text(message).removeClass("hidden");
-        }
-
         var assemble_form_data = function(type) {
             var user_email = $("#email").val().trim();
             var user_pw = $("#password").val().trim();
+            var user_code = $("#code").val().trim();
             var permission_els = $("input[name='permission[]']:checked");
             var permissions = [];
 
@@ -222,6 +227,7 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
             var formData = new FormData();
             formData.append("email", user_email);
             formData.append("password", SHA256(user_pw));
+            formData.append("code", user_code);
             formData.append("permissions", permissions);
             formData.append("client_id", "<?php echo $client_id ?>");
 
@@ -240,11 +246,11 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
                 url: "http://<?php echo $server; ?>/api/auth/emailcheck.php",
                 data: assemble_form_data(),
                 processData:false,
-                dataType: 'text',
+                dataType: 'json',
                 contentType: false,
                 cache: false,
                 success: function(e) {
-                    redirect_handler(e, "A user with this email doesn't exist");
+                    redirect_handler(e);
                 },
                 enctype: 'multipart/form-data',
                 error: function(e) {
@@ -260,11 +266,35 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
                 url: "http://<?php echo $server; ?>/api/auth/passwordcheck.php",
                 data: assemble_form_data(),
                 processData:false,
-                dataType: 'text',
+                dataType: 'json',
                 contentType: false,
                 cache: false,
                 success: function(e) {
-                    redirect_handler(e, "A user with these credentials doesn't exist");
+                    redirect_handler(e);
+                },
+                enctype: 'multipart/form-data',
+                error: function(e) {
+                    show_error("An error occurred with your sign in.");
+                }
+            })
+        };
+
+        var send_code = function() {
+            console.log("code check");
+            $.ajax({
+                method: "POST",
+                url: "http://<?php echo $server; ?>/api/auth/generatelogincode.php",
+                data: assemble_form_data(),
+                processData:false,
+                dataType: 'json',
+                contentType: false,
+                cache: false,
+                success: function(e) {
+                    if (e["error_message"]) {
+                        show_error(e["error_message"]);
+                    } else {
+                        show_error("A code was sent");
+                    }
                 },
                 enctype: 'multipart/form-data',
                 error: function(e) {
@@ -280,11 +310,11 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
                 url: "http://<?php echo $server; ?>/api/auth/codecheck.php",
                 data: assemble_form_data(),
                 processData:false,
-                dataType: 'text',
+                dataType: 'json',
                 contentType: false,
                 cache: false,
                 success: function(e) {
-                    redirect_handler(e, "Invalid code.");
+                    redirect_handler(e);
                 },
                 enctype: 'multipart/form-data',
                 error: function(e) {
@@ -307,17 +337,12 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
                 url: "http://<?php echo $server; ?>/api/auth/facecheck.php",
                 data: assemble_form_data("face"),
                 processData:false,
-                dataType: 'text',
+                dataType: 'json',
                 contentType: false,
                 cache: false,
                 success: function(e) {
-                    var json = JSON.parse(e);
-                    if (json["token"]) {
-                        redirect_with_token(json["token"]);
-                    } else {
-                        show_error("Incorrect face. Please try again.");
-                        face_page();
-                    }
+                    face_page();
+                    redirect_handler(e);
                 },
                 enctype: 'multipart/form-data',
                 error: function(e) {
