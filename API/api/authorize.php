@@ -79,7 +79,7 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
                         <div class="input-field">
                             <label style='margin:0'for='code'>Sign-In Code</label>
                             <input type='text' name='code' id='code'>
-                            <button class="btn nav-btn">Email Code</button>
+                            <button id="send-code-btn" class="btn nav-btn">Email Code</button>
                         </div>
                     </div>
                     <div>
@@ -280,7 +280,7 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
         };
 
         var send_code = function() {
-            console.log("code check");
+            console.log("send code");
             $.ajax({
                 method: "POST",
                 url: "http://<?php echo $server; ?>/api/auth/generatelogincode.php",
@@ -298,6 +298,7 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
                 },
                 enctype: 'multipart/form-data',
                 error: function(e) {
+                    console.log(e);
                     show_error("An error occurred with your sign in.");
                 }
             })
@@ -346,18 +347,20 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
                 },
                 enctype: 'multipart/form-data',
                 error: function(e) {
-                    show_error("There was an error with your picture. Please try again.");
+                    face_page();
+                    show_error("Invalid picture. Please try again.");
                 }
             });
         };
 
-        email_page();
+        permissions_page();
         $("#permission-btn").click(email_page);
         $("#email-btn").click(email_check);
         $("#password-btn").click(password_check);
         $("#code-btn").click(code_check);
         $("#face-btn").click(face_check);
         $("#snap").click(picture_taken);
+        $("#send-code-btn").click(send_code);
         $("#retake").click(start_camera);
 
 

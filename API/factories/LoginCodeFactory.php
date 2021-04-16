@@ -22,7 +22,7 @@ class LoginCodeFactory extends BaseFactory {
     }
 
     protected function checkCodeExists($email, $code) {
-        $stmt = $this->pdo->prepare("select * from logincode join user using (user_id) where user.email = ? and logincode.code = ?");
+        $stmt = $this->pdo->prepare("select * from logincode join user using (user_id) where user.email = ? and logincode.code = ? and logincode.used = 0");
         $stmt->execute(array($email, $code));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -33,6 +33,11 @@ class LoginCodeFactory extends BaseFactory {
         }
     }
 
+    public function markCodeAsUsed($email, $code) {
+        $stmt = $this->pdo->prepare("update logincode join user using (user_id) set logincode.used = 1 where user.email = ? and logincode.code = ?");
+        $stmt->execute(array($email, $code));
+    }
+
     public function generateLoginCode($data) {
         $email = $this->_getValue($data, "email");
 
@@ -41,7 +46,8 @@ class LoginCodeFactory extends BaseFactory {
             $user = $uf->getByEmail($email);
 
             if (!is_null($user)) {
-                return $this->createCode($user["user_id"]);
+                $code =  $this->createCode($user["user_id"]);
+                $this->sendCodeEmail($code["email"], $code["first_name"], $code["code"]);
             } else {
                 return $this->errorArray("Invalid email entered");
             }
@@ -52,11 +58,11 @@ class LoginCodeFactory extends BaseFactory {
     }
 
     protected function createCode($user_id) {
-        $code = md5(uniqid());
+        $code = substr(md5(uniqid()), 0, 8);
         $stmt = $this->pdo->prepare("insert into logincode (user_id, code) values (?,?)");
         $stmt->execute(array($user_id, $code));
 
-        $stmt = $this->pdo->prepare("select * from code where code = ?");
+        $stmt = $this->pdo->prepare("select * from logincode join user using (user_id) where code = ?");
         $stmt->execute(array($code));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -65,6 +71,10 @@ class LoginCodeFactory extends BaseFactory {
         } else {
             return $this->errorArray("Error creating code");
         }
+    }
+
+    protected function sendCodeEmail($email, $first_name, $code) {
+        // Set this up
     }
 
 

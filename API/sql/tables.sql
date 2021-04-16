@@ -53,5 +53,6 @@ create table logincode (
    user_id int not null,
    code varchar(50) default '',
    created datetime default current_timestamp,
+   used tinyint(1) default 0,
    foreign key (user_id) references user(user_id)
 );

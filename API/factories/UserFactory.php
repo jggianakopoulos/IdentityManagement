@@ -3,6 +3,7 @@
 require_once("AccountFactory.php");
 require_once("FaceFactory.php");
 require_once("LoginCodeFactory.php");
+require_once("TokenFactory.php");
 
 class UserFactory extends AccountFactory {
 
@@ -271,6 +272,10 @@ class UserFactory extends AccountFactory {
             $token = $tf->attemptCreateToken($user, $data);
 
             if ($this->_noError($token)) {
+                if ($use_code) {
+                    $lcf = new LoginCodeFactory();
+                    $lcf->markCodeAsUsed($data["email"], $data["code"]);
+                }
                 return array("token" => $token);
             } else {
                 return $this->errorArray("An error occurred. Please refresh and try again");

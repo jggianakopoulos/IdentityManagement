@@ -34,7 +34,6 @@ class FaceFactory extends BaseFactory {
     }
 
     protected function compareFaces($user, $image) {
-        return $user;
         $userdatapath = "/var/www/idm/API/assets/userdata/";
         $userfacepath = $userdatapath . "faces/";
 //        $face = $this->getUserFace($user["user_id"]);
