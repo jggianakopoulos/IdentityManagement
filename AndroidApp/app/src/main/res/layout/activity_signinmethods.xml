@@ -12,7 +12,7 @@
         android:layout_marginStart="158dp"
         android:layout_marginLeft="158dp"
         android:layout_marginTop="442dp"
-        android:text="Password"
+        android:text="Update Preferences"
         android:onClick="save_methods"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
