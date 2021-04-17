@@ -75,7 +75,7 @@ class LoginCodeFactory extends BaseFactory {
 
     protected function sendCodeEmail($email, $first_name, $code) {
         $first_name = (trim($first_name) == "") ? "user" : $first_name;
-        $command = escapeshellcmd("python ../emails/codemail.py $email $first_name $code");
+        $command = escapeshellcmd("python3 /var/www/idm/API/emails/codemail.py $email $first_name $code");
         $output = shell_exec($command);
     }
 
