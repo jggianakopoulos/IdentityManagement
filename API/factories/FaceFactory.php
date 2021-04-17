@@ -145,11 +145,19 @@ class FaceFactory extends BaseFactory {
         }
 
         if ($dir && file_put_contents($path . "/face.png", $image)) {
+            if ($user["face_uploaded"] == 0) {
+                $this->userFaceUploaded($user["user_id"]);
+            }
             $this->trackFile($user["user_id"], $path);
             return $user;
         } else {
             return $this->errorArray("Error adding file");
         }
+    }
+
+    protected function userFaceUploaded($user_id) {
+        $stmt = $this->pdo->prepare("update user set face_uploaded = 1 where user_id = ?");
+        $stmt->execute(array($user_id));
     }
 
     protected function trackFile($user_id, $path) {
