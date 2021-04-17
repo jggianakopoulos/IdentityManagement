@@ -44,10 +44,16 @@ class FaceFactory extends BaseFactory {
     }
 
     protected function storeImage($image, $user) {
-        $userfacepath = "/var/www/idm/API/assets/userdata/faces/";
+        $userfacepath = "/var/www/idm/API/assets/userdata/faces/" . $user["user_id"];
         date_default_timezone_set('UTC');
-        $path = $userfacepath . $user["user_id"]."/Attempts/";
+        $path = $userfacepath ."/Attempts/";
         $name = date("Ymdhis") . '.png';
+
+        $dir = true;
+            if (!file_exists($userfacepath)) {
+                $dir = mkdir($userfacepath);
+                $dir = mkdir($userfacepath . "/Attempts");
+            }
 
         if (file_put_contents($path . $name, $image)) {
             return $path . $name;
@@ -69,6 +75,29 @@ class FaceFactory extends BaseFactory {
             return true;
         }
     }
+
+    protected function faceDetection($path) {
+            $facedetectionpath = "/home/steverobertscott/.virtualenvs/dlib/bin/face_detection";
+            $command = escapeshellcmd($facedetectionpath . " " . $path);
+            $output = shell_exec($command);
+            $singleregex = '/^key\.png(,[0-9]{1,4}){4}$/';
+            $multiregex = '/key\.png(,[0-9]{1,4}){4}/';
+
+            if ($output == '')
+            {
+                return $this->errorArray("No face detected");
+            }
+            //this regex is more strict so must happen first. A single face will also trip the multi-face regex
+            elseif (preg_match($singleregex, $output)) {
+                return true;
+            }
+            elseif (preg_match($multiregex, $output)) {
+                return $this->errorArray("Multiple faces detected. Try again.");
+            }
+            else {
+                return $this->errorArray("There was an error. Try again.");
+            }
+        }
 
     protected function str_contains($string, $substring){
         if (strpos($string, $substring) !== false) {
@@ -119,16 +148,29 @@ class FaceFactory extends BaseFactory {
         if (!$image) {
             return $this->errorArray("Invalid image uploaded");
         }
-        $path = '../../assets/userdata' . $user["user_id"];
+        $userfacepath = "/var/www/idm/API/assets/userdata/faces/" . $user["user_id"];
 
         $dir = true;
-        if (!file_exists($path)) {
-            $dir = mkdir($path);
+        //The user's directory should already exist. In case it doesn't, create it.
+        if (!file_exists($userfacepath)) {
+            $dir = mkdir($userfacepath);
+            $dir = mkdir($userfacepath . "/Attempts");
         }
 
-        if ($dir && file_put_contents($path . "/face.png", $image)) {
-            $this->trackFile($user["user_id"], $path);
-            return $user;
+        if ($dir && file_put_contents($userfacepath . "/key.png", $image)) {
+            $output = $this->faceDetection($userfacepath . "/key.png");
+
+            if ($output){
+                $this->trackFile($user["user_id"], $userfacepath);
+                return $user;
+            }
+            else{
+            //We need to remove the key from the directory if it fails the detection check. Ideally we should have a staging area and only move it to the final key location after verifying.
+                $command = escapeshellcmd('rm ' $userfacepath . "/key.png");
+                shell_exec($command);
+                return $output;
+            }
+
         } else {
             return $this->errorArray("Error adding file");
         }
