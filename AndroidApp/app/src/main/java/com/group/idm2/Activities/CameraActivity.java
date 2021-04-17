@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.ShutterCallback;
@@ -55,10 +56,14 @@ public class CameraActivity extends AbstractActivity implements SurfaceHolder.Ca
             public void onPictureTaken(byte[] data, Camera camera) {
                 System.out.println("picture taken");
 
-                System.out.println(data);
                 try {
                     Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
-                    new FaceTask(CameraActivity.this, sharedPreferences.getString("email", ""), sharedPreferences.getString("password", ""),bitmap).execute();
+
+                    Matrix matrix = new Matrix();
+                    matrix.postRotate(270);
+                    Bitmap altered_bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+
+                    new FaceTask(CameraActivity.this, sharedPreferences.getString("email", ""), sharedPreferences.getString("password", ""),altered_bitmap).execute();
                     showToast(getApplicationContext(), "Your capture is being processed. Please Wait...");
                     finish();
                 } catch (Exception e) {
