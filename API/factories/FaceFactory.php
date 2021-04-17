@@ -3,7 +3,6 @@
 require_once("UserFactory.php");
 
 class FaceFactory extends BaseFactory {
-
     public function __construct() {
         parent::__construct();
         $this->table = "face";
@@ -11,13 +10,27 @@ class FaceFactory extends BaseFactory {
     }
 
     public function considerCompareFaces($data) {
-        $user = $this->checkFaceData($data);
+        $user = $this->_validateCompareFaces($data);
 
         if ($this->_hasError($user)) {
             return $user;
         }
 
         return $this->compareFaces($user, $data["image"]);
+    }
+
+    protected function _validateCompareFaces($data) {
+        $valid_data = $this->_validateImage($data);
+        if ($this->_hasError($valid_data)) {
+            return $valid_data;
+        }
+        if ($this->_hasValue($email = $this->_getValue($data, "email"))) {
+            $uf = new UserFactory();
+            return $uf->getFaceStatus($email);
+        } else {
+            return $this->errorArray("Must include a valid email");
+        }
+
     }
 
     protected function compareFaces($user, $image) {
@@ -114,18 +127,8 @@ class FaceFactory extends BaseFactory {
         return base64_decode($img);
     }
 
-    protected function checkFaceData($data) {
-        $values = $this->_validateUpdate($data);
-
-        if (!array_key_exists("user_id", $values) || !($values["user_id"] > 0)) {
-            return $this->errorArray("Invalid user");
-        } else {
-            return $values;
-        }
-    }
-
     public function considerUpdate($data) {
-        $values = $this->checkFaceData($data);
+        $values = $this->_validateUpdate($data);
 
         if ($this->_hasError($values)) {
             return $values;
@@ -135,11 +138,26 @@ class FaceFactory extends BaseFactory {
     }
 
     protected function _validateUpdate($data) {
-        if (!array_key_exists("image", $data) || !is_string($data["image"])) {
-            return $this->errorArray("Invalid image uploaded");
+        $valid_data = $this->_validateImage($data);
+        if ($this->_hasError($valid_data)) {
+            return $valid_data;
         }
         $uf = new UserFactory();
-        return $uf->considerLogin($data);
+        $user = $uf->considerLogin($data);
+
+        if (!array_key_exists("user_id", $user) || !($user["user_id"] > 0)) {
+            return $this->errorArray("Invalid user");
+        } else {
+            return $user;
+        }
+    }
+
+    protected function _validateImage($data) {
+        if (!array_key_exists("image", $data) || !is_string($data["image"])) {
+            return $this->errorArray("Invalid image uploaded");
+        } else {
+            return $data;
+        }
     }
 
     protected function updateFace($user, $data) {
@@ -161,12 +179,13 @@ class FaceFactory extends BaseFactory {
             $output = $this->faceDetection($userfacepath . "/key.png");
 
             if ($output){
+                $this->userFaceUploaded($user["user_id"]);
                 $this->trackFile($user["user_id"], $userfacepath);
                 return $user;
             }
             else{
             //We need to remove the key from the directory if it fails the detection check. Ideally we should have a staging area and only move it to the final key location after verifying.
-                $command = escapeshellcmd('rm ' $userfacepath . "/key.png");
+                $command = escapeshellcmd('rm ' . $userfacepath . "/key.png");
                 shell_exec($command);
                 return $output;
             }
@@ -174,6 +193,11 @@ class FaceFactory extends BaseFactory {
         } else {
             return $this->errorArray("Error adding file");
         }
+    }
+
+    protected function userFaceUploaded($user_id) {
+        $stmt = $this->pdo->prepare("update user set face_uploaded = 1 where user_id = ?");
+        $stmt->execute(array($user_id));
     }
 
     protected function trackFile($user_id, $path) {

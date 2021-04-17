@@ -27,13 +27,13 @@ class TokenFactory extends BaseFactory
         }
     }
 
-    public function attemptCreateToken($data) {
-        $user = $this->_validateCreateToken($data);
+    public function attemptCreateToken($user, $data) {
+        $valid = $this->_validateCreateToken($user, $data);
         $permissions = $this->_getValue($data, "permissions");
         $developer_id = $this->_getDevIDByClientID($data["client_id"]);
 
-        if ($this->_hasError($user)) {
-            return $user;
+        if (!$valid) {
+            return $this->errorArray("Invalid user");
         }
 
         if (is_array($developer_id) && $this->_hasError($developer_id)) {
@@ -55,14 +55,14 @@ class TokenFactory extends BaseFactory
     }
 
 
-    protected function _validateCreateToken($data) {
+    protected function _validateCreateToken($user, $data) {
         $developer = $this->_getValue($data, "client_id");
         if (!$this->_hasValue($developer)) {
             return $this->errorArray("Invalid company sign in");
         }
 
-        $f = new FaceFactory();
-        return $f->considerCompareFaces($data);
+        $f = new UserFactory();
+        return $f->userIDExists($user["user_id"]);
     }
 
     protected function createToken($user, $developer_id) {
@@ -77,7 +77,7 @@ class TokenFactory extends BaseFactory
         if ($this->_hasValue($result)) {
             return $result;
         } else {
-            return $this->errorArray(array("user" => $user, $developer_id => $developer_id));
+            return $this->errorArray("Error creating token");
         }
     }
 

@@ -35,13 +35,15 @@ public class DrawerActivity extends AbstractActivity {
         PrimaryDrawerItem drawerEmptyItem= new PrimaryDrawerItem().withIdentifier(0).withName("");
         drawerEmptyItem.withEnabled(false);
 
-        PrimaryDrawerItem faceUpdate = new PrimaryDrawerItem().withIdentifier(1)
+        PrimaryDrawerItem changeSignIn = new PrimaryDrawerItem().withIdentifier(1)
+                .withName("Change Sign-in Options");
+        PrimaryDrawerItem faceUpdate = new PrimaryDrawerItem().withIdentifier(2)
                 .withName("Update Face");
-        PrimaryDrawerItem profileSettings = new PrimaryDrawerItem().withIdentifier(2)
+        PrimaryDrawerItem profileSettings = new PrimaryDrawerItem().withIdentifier(3)
                 .withName("Profile Settings");
-        PrimaryDrawerItem changePassword = new PrimaryDrawerItem().withIdentifier(3)
+        PrimaryDrawerItem changePassword = new PrimaryDrawerItem().withIdentifier(4)
                 .withName("Change Password");
-        SecondaryDrawerItem logout = new SecondaryDrawerItem().withIdentifier(4)
+        SecondaryDrawerItem logout = new SecondaryDrawerItem().withIdentifier(5)
                 .withName("Logout");
 
         Drawer result = new DrawerBuilder()
@@ -53,6 +55,7 @@ public class DrawerActivity extends AbstractActivity {
                 .withSelectedItem(-1)
                 .addDrawerItems(
                         drawerEmptyItem,
+                        changeSignIn,
                         faceUpdate,
                         profileSettings,
                         changePassword,
@@ -62,19 +65,19 @@ public class DrawerActivity extends AbstractActivity {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        if (drawerItem.getIdentifier() == 1 && !(activity instanceof FaceActivity)) {
+                        if (drawerItem.getIdentifier() == 1 && !(activity instanceof SignInMethodsActivity)) {
+                            Intent intent = new Intent(activity, SignInMethodsActivity.class);
+                            view.getContext().startActivity(intent);
+                        } else if (drawerItem.getIdentifier() == 2 && !(activity instanceof FaceActivity)) {
                             Intent intent = new Intent(activity, FaceActivity.class);
                             view.getContext().startActivity(intent);
-                        } else if (drawerItem.getIdentifier() == 2 && !(activity instanceof ProfileActivity)) {
+                        } else if (drawerItem.getIdentifier() == 3 && !(activity instanceof ProfileActivity)) {
                             Intent intent = new Intent(activity, ProfileActivity.class);
                             view.getContext().startActivity(intent);
-                        } else if (drawerItem.getIdentifier() == 3 && !(activity instanceof PasswordActivity)) {
+                        } else if (drawerItem.getIdentifier() == 4 && !(activity instanceof PasswordActivity)) {
                             Intent intent = new Intent(activity, PasswordActivity.class);
                             view.getContext().startActivity(intent);
-                        } else if (drawerItem.getIdentifier() == 3 && !(activity instanceof PasswordActivity)) {
-                            Intent intent = new Intent(activity, PasswordActivity.class);
-                            view.getContext().startActivity(intent);
-                        } else if (drawerItem.getIdentifier() == 4) {
+                        } else if (drawerItem.getIdentifier() == 5) {
                             signOut();
                         }
                         return true;

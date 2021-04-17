@@ -10,6 +10,13 @@ create table user (
     primary key (user_id)
 );
 
+alter table user
+    add use_password tinyint(1) default 1,
+    add use_face tinyint(1) default 0,
+    add use_code tinyint(1) default 0;
+
+alter table user add face_uploaded tinyint default 0;
+
 create table developer (
 	developer_id int not null auto_increment,
 	client_id varchar(50),
@@ -39,4 +46,13 @@ create table face (
     path varchar(100),
     created datetime default current_timestamp,
     foreign key (user_id) references user(user_id)
+);
+
+create table logincode (
+   logincode_id int primary key auto_increment,
+   user_id int not null,
+   code varchar(50) default '',
+   created datetime default current_timestamp,
+   used tinyint(1) default 0,
+   foreign key (user_id) references user(user_id)
 );

@@ -27,23 +27,19 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
                     <img style="width:100px" src="user.svg">
                 </div><div style="font-family: 'Work Sans', sans-serif;font-size:20px;font-weight: 500;margin: auto;">Verify Your Identity</div>
                 <div id="error-message" class="hidden alert alert-danger" style="margin: 10px;">An error occurred with your sign-in</div>
-                <div id="login">
+                <div id="email-section">
                     <div>
                         <div class="input-field">
                             <label style='margin:0'for='email'>Email</label>
                             <input type='text' name='email' id='email'>
                         </div>
-                        <div class="input-field">
-                            <label style='margin:0'for='password'>Password</label>
-                            <input type='password' name='password' id='password'>
-                        </div>
                     </div>
                     <div>
                         <!--								<button class="btn nav-btn" onclick="window.location.href='--><?php //echo $_REQUEST["cancel_url"] ?><!--////';" type="button" >Cancel</button>-->
-                        <button class="btn nav-btn" style="float:right" id='login-btn' type="button">Login</button>
+                        <button class="btn nav-btn" style="float:right" id='email-btn' type="button">Login</button>
                     </div>
                 </div>
-                <div id="permissions" class="hidden" >
+                <div id="permission-section" class="hidden" >
                     <p style="margin:10px;max-width:350px;font-style:italic;">What information do you want to give to  <b>Company</b>?</p>
                     <div>
                         <div class="input-field" style="flex-direction: row">
@@ -66,7 +62,32 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
                         <button class="btn nav-btn" style="float:right;" id='permission-btn' type="button" >Continue</button>
                     </div>
                 </div>
-                <div id="verify" class="hidden" style="display: flex;flex-direction:column;">
+                <div id="password-section">
+                    <div>
+                        <div class="input-field">
+                            <label style='margin:0'for='password'>Password</label>
+                            <input type='password' name='password' id='password'>
+                        </div>
+                    </div>
+                    <div>
+                        <!--								<button class="btn nav-btn" onclick="window.location.href='--><?php //echo $_REQUEST["cancel_url"] ?><!--////';" type="button" >Cancel</button>-->
+                        <button class="btn nav-btn" style="float:right" id='password-btn' type="button">Continue</button>
+                    </div>
+                </div>
+                <div id="code-section">
+                    <div>
+                        <div class="input-field">
+                            <label style='margin:0'for='code'>Sign-In Code</label>
+                            <input type='text' name='code' id='code'>
+                            <button id="send-code-btn" class="btn nav-btn">Email Code</button>
+                        </div>
+                    </div>
+                    <div>
+                        <!--								<button class="btn nav-btn" onclick="window.location.href='--><?php //echo $_REQUEST["cancel_url"] ?><!--////';" type="button" >Cancel</button>-->
+                        <button class="btn nav-btn" style="float:right" id='code-btn' type="button">Continue</button>
+                    </div>
+                </div>
+                <div id="face-section" class="hidden" style="display: flex;flex-direction:column;">
                     <div class="input-field">
                         <label for="facefile">Upload Face</label>
                         <div id="video-holder"></div>
@@ -78,7 +99,7 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
                         </div>
                         <!--                                <audio id="snapSound" src="audio/snap.wav" preload = "auto"></audio>-->
                     </div>
-                    <button class="btn nav-btn" style="text-align:center;margin: 5px;" id="submit">Verify and Continue</button>
+                    <button class="btn nav-btn" style="text-align:center;margin: 5px;" id="face-btn">Verify and Continue</button>
                     <div id='loading' class="btn nav-btn"><div style="margin-right:5px">Authenticating sign-in. Please Wait.</div><div class="lds-ring" style="float: right;"><div></div><div></div><div></div><div></div></div></div></div>
             </div>
         </div>
@@ -92,6 +113,40 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
         const snapSoundElement = document.getElementById('snapSound');
         const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
         webcam.start();
+
+        //This function needs to redirect to the redirect_url, include an auth token, and include the verification token from the original request
+        var redirect_with_token = function(token) {
+            console.log("redirect with token");
+            window.location.replace("<?php echo $_REQUEST["redirect_url"] ?>" + "?token=" + token);
+        };
+
+        var redirect_handler = function(input) {
+            console.log(input);
+            if (input["error_message"]) {
+                show_error(input["error_message"]);
+                console.log("error");
+            } else if (input["next"]) {
+                switch(input["next"]) {
+                    case "password":
+                        password_page();
+                        break;
+                    case "code":
+                        code_page();
+                        break;
+                    case "face":
+                        face_page();
+                        break;
+                    default:
+                        email_page();
+
+                }
+
+            } else if (input["token"]){
+                redirect_with_token(input["token"])
+            } else {
+                show_error("An error occurred. Please try again");
+            }
+        };
 
         var picture_taken = function(e)  {
             var img = webcam.snap();
@@ -113,66 +168,160 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
 
         }
 
-        var verify_page = function(e) {
-            $("#verify").removeClass("hidden");
-            $("#permissions").addClass("hidden");
-            $("#login").addClass("hidden");
-            $("#loading").addClass("hidden");
-            $("#submit").removeClass("hidden");
-        };
-
-        var login_page = function(e) {
-            $("#verify").addClass("hidden");
-            $("#permissions").addClass("hidden");
-            $("#login").removeClass("hidden");
-
-        };
-
-        var permissions_page = function(e) {
-            $("#verify").addClass("hidden");
-            $("#login").addClass("hidden");
-            $("#permissions").removeClass("hidden");
-        };
-
         var hide_error = function() {
             $("#error-message").addClass("hidden");
         };
 
         var show_error = function(message) {
-            $("#error-message").text(message);
-            $("#error-message").removeClass("hidden");
+            $("#error-message").text(message).removeClass("hidden");
         }
 
-        var credential_check = function() {
+        var hide_all = function() {
+            hide_error();
+            $("#email-section").addClass("hidden");
+            $("#permission-section").addClass("hidden");
+            $("#code-section").addClass("hidden");
+            $("#password-section").addClass("hidden");
+            $("#face-section").addClass("hidden");
+        };
+
+        var email_page = function() {
+            hide_all();
+            $("#email-section").removeClass("hidden");
+        };
+
+        var password_page = function() {
+            hide_all();
+            $("#password-section").removeClass("hidden");
+        };
+
+
+        var permissions_page = function() {
+            hide_all();
+            $("#permission-section").removeClass("hidden");
+        };
+
+        var code_page = function() {
+            hide_all();
+            $("#code-section").removeClass("hidden");
+        };
+
+        var face_page = function() {
+            hide_all();
+            $("#face-section").removeClass("hidden");
+            $("#loading").addClass("hidden");
+            $("#submit").removeClass("hidden");
+        };
+
+        var assemble_form_data = function(type) {
             var user_email = $("#email").val().trim();
             var user_pw = $("#password").val().trim();
+            var user_code = $("#code").val().trim();
+            var permission_els = $("input[name='permission[]']:checked");
+            var permissions = [];
 
+            for(var i=0;i<permission_els.length;i++) {
+                permissions.push(permission_els[i].value.trim());
+            }
+
+            var formData = new FormData();
+            formData.append("email", user_email);
+            formData.append("password", SHA256(user_pw));
+            formData.append("code", user_code);
+            formData.append("permissions", permissions);
+            formData.append("client_id", "<?php echo $client_id ?>");
+
+            if (type == "face") {
+                var canvas = document.getElementById('canvas');
+                formData.append('image', canvas.toDataURL());
+            }
+
+            return formData;
+        }
+
+        var email_check = function() {
+            console.log("email check");
             $.ajax({
                 method: "POST",
-                url: "http://<?php echo $server; ?>/api/user/login.php",
-                data: { email: user_email, password: SHA256(user_pw) },
+                url: "http://<?php echo $server; ?>/api/auth/emailcheck.php",
+                data: assemble_form_data(),
+                processData:false,
                 dataType: 'json',
+                contentType: false,
+                cache: false,
                 success: function(e) {
-                    console.log(["a", e]);
-                    if (e["error_message"]) {
-                        show_error("Invalid credentials.");
-                        console.log("error");
-                    } else {
-                        hide_error();
-                        permissions_page();
-                    }
+                    redirect_handler(e);
                 },
-                error: function() {
-                    login_page();
-                    show_error("There was an error with your login");
+                enctype: 'multipart/form-data',
+                error: function(e) {
+                    show_error("An error occurred with your sign in.");
                 }
             })
         };
 
-        //This function needs to redirect to the redirect_url, include an auth token, and include the verification token from the original request
-        var redirect_with_token = function(token) {
-            console.log("redirect with token");
-            window.location.replace("<?php echo $_REQUEST["redirect_url"] ?>" + "?token=" + token);
+        var password_check = function() {
+            console.log("password check");
+            $.ajax({
+                method: "POST",
+                url: "http://<?php echo $server; ?>/api/auth/passwordcheck.php",
+                data: assemble_form_data(),
+                processData:false,
+                dataType: 'json',
+                contentType: false,
+                cache: false,
+                success: function(e) {
+                    redirect_handler(e);
+                },
+                enctype: 'multipart/form-data',
+                error: function(e) {
+                    show_error("An error occurred with your sign in.");
+                }
+            })
+        };
+
+        var send_code = function() {
+            console.log("send code");
+            $.ajax({
+                method: "POST",
+                url: "http://<?php echo $server; ?>/api/auth/generatelogincode.php",
+                data: assemble_form_data(),
+                processData:false,
+                dataType: 'json',
+                contentType: false,
+                cache: false,
+                success: function(e) {
+                    if (e["error_message"]) {
+                        show_error(e["error_message"]);
+                    } else {
+                        show_error("A code was sent");
+                    }
+                },
+                enctype: 'multipart/form-data',
+                error: function(e) {
+                    console.log(e);
+                    show_error("An error occurred with your sign in.");
+                }
+            })
+        };
+
+        var code_check = function() {
+            console.log("code check");
+            $.ajax({
+                method: "POST",
+                url: "http://<?php echo $server; ?>/api/auth/codecheck.php",
+                data: assemble_form_data(),
+                processData:false,
+                dataType: 'json',
+                contentType: false,
+                cache: false,
+                success: function(e) {
+                    redirect_handler(e);
+                },
+                enctype: 'multipart/form-data',
+                error: function(e) {
+                    show_error("An error occurred with your sign in.");
+                }
+            })
         };
 
         var loading_status = function(e) {
@@ -182,62 +331,36 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
         };
 
         var face_check = function() {
-            console.log("facecheck");
+            console.log("face check");
             loading_status();
-            var user_email = $("#email").val().trim();
-            var user_pw = $("#password").val().trim();
-            var permission_els = $("input[name='permission[]']:checked");
-            var permissions = [];
-
-            for(var i=0;i<permission_els.length;i++) {
-                permissions.push(permission_els[i].value.trim());
-            }
-
-            var formData = new FormData();
-            var canvas = document.getElementById('canvas');
-            formData.append('image', canvas.toDataURL());
-            formData.append("email", user_email);
-            formData.append("password", SHA256(user_pw));
-            formData.append("permissions", permissions);
-            formData.append("client_id", "<?php echo $client_id ?>");
-
             $.ajax({
                 method: "POST",
-                url: "http://<?php echo $server; ?>/api/user/facecheck.php",
-                data: formData,
+                url: "http://<?php echo $server; ?>/api/auth/facecheck.php",
+                data: assemble_form_data("face"),
                 processData:false,
-                dataType: 'text',
+                dataType: 'json',
                 contentType: false,
                 cache: false,
                 success: function(e) {
-                    var json = JSON.parse(e);
-                    if (json["token"]) {
-                        redirect_with_token(json["token"]);
-                    } else {
-                        show_error("Incorrect face. Please try again.");
-                        verify_page(e);
-                    }
+                    face_page();
+                    redirect_handler(e);
                 },
                 enctype: 'multipart/form-data',
                 error: function(e) {
-                    show_error("There was an error with your picture. Please try again.");
-                    login_page();
+                    face_page();
+                    show_error("Invalid picture. Please try again.");
                 }
-            })
+            });
         };
 
-        var logout = function() {
-            //Clear data here too
-            login_page();
-        };
-
-
-        login_page();
-        $("#login-btn").click(credential_check);
-        $("#logout-btn").click(logout);
-        $("#permission-btn").click(verify_page);
-        $("#submit").click(face_check);
+        permissions_page();
+        $("#permission-btn").click(email_page);
+        $("#email-btn").click(email_check);
+        $("#password-btn").click(password_check);
+        $("#code-btn").click(code_check);
+        $("#face-btn").click(face_check);
         $("#snap").click(picture_taken);
+        $("#send-code-btn").click(send_code);
         $("#retake").click(start_camera);
 
 

@@ -15,11 +15,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 public class LoginActivity extends AbstractActivity {
-
-
     private EditText emailET, passwordET;
-    private SharedPreferences sharedPreferences;
-    Button loginButton, registerButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
