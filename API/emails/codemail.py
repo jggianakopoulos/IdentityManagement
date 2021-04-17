@@ -23,7 +23,7 @@ def read_template(file_name):
     return Template(msg_template_content)
 
 def main():
-    message_template = read_template('/var/www/idm/API.emails/codeemail_template.txt')
+    message_template = read_template('/var/www/idm/API/emails/codeemail_template.txt')
 
     # set up the SMTP server
     smtplib_server = smtplib.SMTP(host='smtp.gmail.com', port=587)
