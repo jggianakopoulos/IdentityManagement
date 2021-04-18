@@ -1,14 +1,14 @@
 <?php
 require("config/settings.php");
 $client_secret = "c2be2d061d0c4f56060ae9d18a2c0ca0";
-$token = $_POST["authtoken"];
-echo "Before curl";
+$authtoken = $_POST["authtoken"];
+
 $ch = curl_init();
 curl_setopt_array ( $ch, array (
     CURLOPT_URL => "http://$server/api/developer/convert_token.php",
     CURLOPT_POST => 1,
     CURLOPT_POSTFIELDS => array (
-        'authtoken' => $token,
+        'authtoken' => $authtoken,
         'client_secret' => $client_secret
     ),
     CURLOPT_RETURNTRANSFER => 1
