@@ -1,18 +1,16 @@
 package com.group.idm2.Activities;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 import com.group.idm2.Tasks.LoginTask;
 import com.group.idm2.R;
 
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.annotation.RequiresApi;
+
 
 public class LoginActivity extends AbstractActivity {
     private EditText emailET, passwordET;

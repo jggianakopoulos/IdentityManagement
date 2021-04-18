@@ -1,5 +1,6 @@
 package com.group.idm2.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -45,6 +46,11 @@ public class RegisterActivity extends AbstractActivity {
         }
 
         new RegisterTask(this, email, password, confirm_password, first_name, last_name, phone_number).execute();
+    }
+
+    public void login(View view) {
+        Intent send = new Intent(this, LoginActivity.class);
+        this.startActivity(send);
     }
 
 }
