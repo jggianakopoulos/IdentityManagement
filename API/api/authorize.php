@@ -295,9 +295,10 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
                     if (e["error_message"]) {
                         show_error(e["error_message"]);
                     } else {
-                        $('#email-message').fadeIn('slow', function(){
-                            $('#email-message').delay(5000).fadeOut();
-                        });;
+                        $('#email-message').removeClass("hidden");
+                        setTimeout(function() {
+                            $("#email-message").addClass("hidden");
+                        }, 5000);
                     }
                 },
                 enctype: 'multipart/form-data',
