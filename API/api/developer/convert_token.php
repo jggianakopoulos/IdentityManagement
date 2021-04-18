@@ -1,6 +1,5 @@
 <?php
 
 require("../../factories/TokenFactory.php");
-
 $f = new TokenFactory();
-return json_encode($f->attemptRetrieveAccessToken($_REQUEST));
+echo json_encode($f->attemptGetTokenData($_REQUEST));

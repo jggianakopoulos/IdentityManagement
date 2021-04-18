@@ -1,18 +1,38 @@
 <?php
-    require("factories/TokenFactory.php");
-    $f = new TokenFactory();
-    $data =  $f->getDataFromToken($_REQUEST);
-    if ($data["permission_firstname"] == 1) {
+
+$client_secret = "eacf1535c5ca11e8d59189c08688596a";
+$token = $_POST["authtoken"];
+
+$ch = curl_init ( 'localhost/identitymanagement/api/developer/convert_token.php' );
+curl_setopt_array ( $ch, array (
+    CURLOPT_POST => 1,
+    CURLOPT_POSTFIELDS => array (
+        'authtoken' => $token,
+        'client_secret' => $client_secret
+    ),
+    CURLOPT_RETURNTRANSFER => 1
+) );
+
+$response = curl_exec($ch);
+
+$data = json_decode($response, true);
+
+if (array_key_exists("error_message", $data)) {
+    // Stop everything and assess error
+}
+
+
+    if (array_key_exists("first_name", $data)) {
         $first = $data["first_name"];
     } else {
         $first = "Not shared";
     }
-    if ($data["permission_lastname"] == 1) {
+    if (array_key_exists("last_name", $data)) {
         $last = $data["last_name"];
     } else {
         $last = "Not shared";
     }
-    if ($data["permission_email"] == 1) {
+    if (array_key_exists("email", $data)) {
         $email = $data["email"];
     } else {
         $email = "Not shared";
