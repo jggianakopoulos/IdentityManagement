@@ -2,10 +2,10 @@
 require("config/settings.php");
 $client_secret = "c2be2d061d0c4f56060ae9d18a2c0ca0";
 $token = $_POST["authtoken"];
-
+echo "Before curl";
 $ch = curl_init();
 curl_setopt_array ( $ch, array (
-    CURLOPT_URL => 'http://$server/api/developer/convert_token.php',
+    CURLOPT_URL => "http://$server/api/developer/convert_token.php",
     CURLOPT_POST => 1,
     CURLOPT_POSTFIELDS => array (
         'authtoken' => $token,
@@ -16,7 +16,7 @@ curl_setopt_array ( $ch, array (
 
 $response = curl_exec($ch);
 
-$data = $response;
+$data = json_decode($response, true);
 
 if (array_key_exists("error_message", $data)) {
     // Stop everything and assess error
