@@ -1,6 +1,6 @@
 <?php
 require("config/settings.php");
-$redirect_url = "http://$server/redirect-success.php";
+$redirect_url = "http://$server/userdata.php";
 $client_id = "664c6fc3325ffd77746c02e185601a50 ";
 $verification_token = "abc123";
 $cancel_url = "http://$server/testsite.php";
