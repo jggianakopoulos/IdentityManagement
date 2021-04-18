@@ -276,7 +276,7 @@ class UserFactory extends AccountFactory {
                     $lcf = new LoginCodeFactory();
                     $lcf->markCodeAsUsed($data["email"], $data["code"]);
                 }
-                return array("token" => $token);
+                return array("token" => $token["token"]);
             } else {
                 return $this->errorArray("An error occurred. Please refresh and try again");
             }
