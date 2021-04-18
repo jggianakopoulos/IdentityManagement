@@ -17,6 +17,7 @@ curl_setopt_array ( $ch, array (
     ),
     CURLOPT_RETURNTRANSFER => 1
 ) );
+echo "before curl exec";
 $response = curl_exec($ch);
 echo "after curl";
 
