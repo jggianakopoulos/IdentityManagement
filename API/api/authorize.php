@@ -27,7 +27,7 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
                     <img style="width:100px" src="user.svg">
                 </div><div style="font-family: 'Work Sans', sans-serif;font-size:20px;font-weight: 500;margin: auto;">Verify Your Identity</div>
                 <div id="error-message" class="hidden alert alert-danger" style="margin: 10px;">An error occurred with your sign-in</div>
-                <div id="email-message" class="alert alert-danger" style="margin: 10px;background-color:#6b88ca;display:none;">An email has been sent with a login code.</div>
+                <div id="email-message" class="alert" style="margin: 10px;background-color:#b1bace;display:none;">An email containing your login code has been sent.</div>
                 <div id="email-section">
                     <div>
                         <div class="input-field">
