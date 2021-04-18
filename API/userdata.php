@@ -61,10 +61,10 @@ if (array_key_exists("error_message", $data)) {
 					<span class="login100-form-title p-b-53">
 						Welcome,
 						<?php
-                        if ($first!=''){
+                        if ($first!='Not shared'){
                             echo $first;
                         }
-                        elseif ($email != ''){
+                        elseif ($email != 'Not shared'){
                             echo $email;
                         }
                         else{
