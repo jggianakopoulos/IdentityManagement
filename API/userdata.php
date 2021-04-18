@@ -1,6 +1,6 @@
 <?php
 require("config/settings.php");
-$client_secret = "eacf1535c5ca11e8d59189c08688596a";
+$client_secret = "c2be2d061d0c4f56060ae9d18a2c0ca0";
 $token = $_POST["authtoken"];
 
 $ch = curl_init ( 'http://$server/api/developer/convert_token.php' );
