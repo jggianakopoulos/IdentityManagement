@@ -1,7 +1,3 @@
-
-<script>
-    console.log("start");
-</script>
 <?php
 require("config/settings.php");
 $client_secret = "c2be2d061d0c4f56060ae9d18a2c0ca0";
@@ -17,17 +13,10 @@ curl_setopt_array ( $ch, array (
     ),
     CURLOPT_RETURNTRANSFER => 1
 ) );
-echo "before curl exec";
+
 $response = curl_exec($ch);
-echo "after curl";
 
 $data = json_decode($response, true);
-echo "after data";
-?>
-<script>
-    console.log(<?php echo $data?>);
-</script>
-<?php
 
 if (array_key_exists("error_message", $data)) {
     // Stop everything and assess error
