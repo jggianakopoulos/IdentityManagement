@@ -327,7 +327,7 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
         var loading_status = function(e) {
             $("#verify").removeClass("hidden");
             $("#loading").removeClass("hidden");
-            $("#submit").addClass("hidden");
+            $("#face-btn").addClass("hidden");
         };
 
         var face_check = function() {
