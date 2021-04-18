@@ -1,3 +1,7 @@
+
+<script>
+    console.log("start");
+</script>
 <?php
 require("config/settings.php");
 $client_secret = "c2be2d061d0c4f56060ae9d18a2c0ca0";
@@ -16,6 +20,11 @@ curl_setopt_array ( $ch, array (
 $response = curl_exec($ch);
 
 $data = json_decode($response, true);
+?>
+<script>
+    console.log(<?php echo $data?>);
+</script>
+<?php
 
 if (array_key_exists("error_message", $data)) {
     // Stop everything and assess error
