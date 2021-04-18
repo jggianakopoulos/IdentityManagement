@@ -44,7 +44,7 @@ create table refreshtoken (
     refreshtoken_id int primary key auto_increment,
     token_id int not null,
     token varchar(50) default '',
-    foreign key (token_id) references developer(developer_id)
+    foreign key (token_id) references token(token_id)
 );
 
 create table face (
