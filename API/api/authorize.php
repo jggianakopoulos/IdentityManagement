@@ -118,7 +118,7 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
         //This function needs to redirect to the redirect_url, include an auth token, and include the verification token from the original request
         var redirect_with_token = function(token) {
             console.log("redirect with token");
-            window.location.replace("<?php echo $_REQUEST["redirect_url"] ?>" + "?token=" + token);
+            window.location.replace("<?php echo $_REQUEST["redirect_url"] ?>" + "?authtoken=" + token);
         };
 
         var redirect_handler = function(input) {
