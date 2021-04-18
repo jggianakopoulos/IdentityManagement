@@ -27,6 +27,7 @@ class TokenFactory extends BaseFactory
         }
     }
 
+    // Validate, extract values, and create the token
     public function attemptCreateToken($user, $data) {
         $valid = $this->_validateCreateToken($user, $data);
         $permissions = $this->_getValue($data, "permissions");
@@ -65,6 +66,7 @@ class TokenFactory extends BaseFactory
         return $f->userIDExists($user["user_id"]);
     }
 
+    // Create a new auth token
     protected function createToken($user, $developer_id) {
         $token = md5(uniqid());
         $stmt = $this->pdo->prepare("insert into token (user_id, developer_id, permission_email, permission_firstname, permission_lastname, token, type) values (?,?,?,?,?,?,'auth')");
@@ -94,7 +96,7 @@ class TokenFactory extends BaseFactory
     }
 
     // Convert from authorization token to access token
-    public function attemptRetrieveAccessToken($data) {
+    public function retrieveConvertedToken($data) {
         $token = $this->_validateTokenData($data, "auth");
 
         if ($this->_hasError($token)) {
@@ -124,10 +126,11 @@ class TokenFactory extends BaseFactory
         if ($this->_hasValue($result)) {
             return $result;
         } else {
-            return $this->errorArray("Invalid credentials");
+            return $this->errorArray("A token with these credentials does not exist. Confirm your client secret and make sure the auth token hasn't already been converted.");
         }
     }
 
+    // Convert an auth token to an access token
     protected function convertToken($token) {
         $stmt = $this->pdo->prepare("update token set token = ?, type='access' where token_id = ?");
         $stmt->execute(array(md5(uniqid()), $token["token_id"]));
@@ -137,18 +140,52 @@ class TokenFactory extends BaseFactory
         if (is_null($token)) {
             return $this->errorArray("Invalid token");
         } else {
-            return $token["token"];
+            return $token;
         }
     }
 
-    public function attemptGetUserData($data) {
-        $token = $this->_validateTokenData($data, "access");
+
+    // Convert auth token and get new access token, refresh token, and user data
+    public function attemptGetTokenData($data) {
+        $token = $this->_validateTokenData($data, "auth");
 
         if ($this->_hasError($token)) {
             return $token;
         }
 
-        return $this->getUserData($token);
+        $userdata =  $this->getUserData($token);
+
+        $tf = new TokenFactory();
+        $access_token = $tf->retrieveConvertedToken($data);
+
+        if ($this->_hasError($access_token)) {
+            return $this->errorArray("There was a problem with your token");
+        }
+
+        $refresh_token = $this->createRefreshToken($access_token["token_id"]);
+
+        if ($this->_hasError($refresh_token)) {
+            return $this->errorArray("Your token could not be converted.");
+        }
+
+        return array_merge($userdata, array("access_token" => $access_token["token"], "refresh_token" => $refresh_token["token"]));
+    }
+
+    // Create a refresh token, which is used to extend the expiration of an existing access token
+    protected function createRefreshToken($access_token_id) {
+        $token = md5(uniqid());
+        $stmt = $this->pdo->prepare("insert into refreshtoken (token_id, token) values (?,?)");
+        $stmt->execute(array($access_token_id, $token));
+
+        $stmt = $this->pdo->prepare("select * from refreshtoken where token = ?");
+        $stmt->execute(array($token));
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($this->_hasValue($result)) {
+            return $result;
+        } else {
+            return $this->errorArray("Error creating token");
+        }
     }
 
     protected function getUserData($token) {
