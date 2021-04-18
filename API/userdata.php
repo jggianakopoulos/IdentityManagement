@@ -1,7 +1,7 @@
 <?php
 require("config/settings.php");
 $client_secret = "c2be2d061d0c4f56060ae9d18a2c0ca0";
-$authtoken = $_POST["authtoken"];
+$authtoken = $_REQUEST["authtoken"];
 
 $ch = curl_init();
 curl_setopt_array ( $ch, array (
