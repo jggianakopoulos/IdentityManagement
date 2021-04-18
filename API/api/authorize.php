@@ -291,6 +291,7 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
                 contentType: false,
                 cache: false,
                 success: function(e) {
+                    console.log(e);
                     if (e["error_message"]) {
                         show_error(e["error_message"]);
                     } else {
