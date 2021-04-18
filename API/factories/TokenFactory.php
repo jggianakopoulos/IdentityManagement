@@ -108,7 +108,6 @@ class TokenFactory extends BaseFactory
 
     // Make sure it exists, isn't too old, and has a valid secret
     protected function _validateTokenData($data, $type) {
-        return array("request" => $data, "error_message" => "error");
         $authtoken = $this->_getValue($data, $type . "token");
         $secret = $this->_getValue($data, "client_secret");
 
