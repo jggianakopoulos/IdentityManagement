@@ -45,6 +45,8 @@ public class DrawerActivity extends AbstractActivity {
                 .withName("Change Password");
         SecondaryDrawerItem logout = new SecondaryDrawerItem().withIdentifier(5)
                 .withName("Logout");
+        PrimaryDrawerItem home = new PrimaryDrawerItem().withIdentifier(6)
+                .withName("Home");
 
         Drawer result = new DrawerBuilder()
                 .withActivity(activity)
@@ -55,6 +57,7 @@ public class DrawerActivity extends AbstractActivity {
                 .withSelectedItem(-1)
                 .addDrawerItems(
                         drawerEmptyItem,
+                        home,
                         changeSignIn,
                         faceUpdate,
                         profileSettings,
@@ -65,20 +68,23 @@ public class DrawerActivity extends AbstractActivity {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        if (drawerItem.getIdentifier() == 1 && !(activity instanceof SignInMethodsActivity)) {
+                        if (drawerItem.getIdentifier() == 1) {
                             Intent intent = new Intent(activity, SignInMethodsActivity.class);
                             view.getContext().startActivity(intent);
-                        } else if (drawerItem.getIdentifier() == 2 && !(activity instanceof FaceActivity)) {
+                        } else if (drawerItem.getIdentifier() == 2) {
                             Intent intent = new Intent(activity, FaceActivity.class);
                             view.getContext().startActivity(intent);
-                        } else if (drawerItem.getIdentifier() == 3 && !(activity instanceof ProfileActivity)) {
+                        } else if (drawerItem.getIdentifier() == 3) {
                             Intent intent = new Intent(activity, ProfileActivity.class);
                             view.getContext().startActivity(intent);
-                        } else if (drawerItem.getIdentifier() == 4 && !(activity instanceof PasswordActivity)) {
+                        } else if (drawerItem.getIdentifier() == 4) {
                             Intent intent = new Intent(activity, PasswordActivity.class);
                             view.getContext().startActivity(intent);
                         } else if (drawerItem.getIdentifier() == 5) {
                             signOut();
+                        } else if (drawerItem.getIdentifier() == 6) {
+                            Intent intent = new Intent(activity, HomeActivity.class);
+                            view.getContext().startActivity(intent);
                         }
                         return true;
                     }

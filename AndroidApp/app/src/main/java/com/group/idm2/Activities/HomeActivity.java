@@ -31,4 +31,13 @@ public class HomeActivity extends DrawerActivity {
         Intent send = new Intent(this, FaceActivity.class);
         this.startActivity(send);
     }
+
+    public void signInSettings(View view) {
+        Intent send = new Intent(this, SignInMethodsActivity.class);
+        this.startActivity(send);
+    }
+
+    public void logout(View view) {
+        signOut();
+    }
 }
