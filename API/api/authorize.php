@@ -27,6 +27,7 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
                     <img style="width:100px" src="user.svg">
                 </div><div style="font-family: 'Work Sans', sans-serif;font-size:20px;font-weight: 500;margin: auto;">Verify Your Identity</div>
                 <div id="error-message" class="hidden alert alert-danger" style="margin: 10px;">An error occurred with your sign-in</div>
+                <div id="email-message" class="alert" style="margin: 10px;background-color:#b1bace;display:none;">An email containing your login code has been sent.</div>
                 <div id="email-section">
                     <div>
                         <div class="input-field">
@@ -117,7 +118,7 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
         //This function needs to redirect to the redirect_url, include an auth token, and include the verification token from the original request
         var redirect_with_token = function(token) {
             console.log("redirect with token");
-            window.location.replace("<?php echo $_REQUEST["redirect_url"] ?>" + "?token=" + token);
+            window.location.replace("<?php echo $_REQUEST["redirect_url"] ?>" + "?authtoken=" + token);
         };
 
         var redirect_handler = function(input) {
@@ -290,10 +291,14 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
                 contentType: false,
                 cache: false,
                 success: function(e) {
+                    console.log(e);
                     if (e["error_message"]) {
                         show_error(e["error_message"]);
                     } else {
-                        show_error("A code was sent");
+                        $('#email-message').fadeIn();
+                        setTimeout(function() {
+                            $("#email-message").fadeOut();
+                        }, 5000);
                     }
                 },
                 enctype: 'multipart/form-data',
@@ -327,7 +332,7 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
         var loading_status = function(e) {
             $("#verify").removeClass("hidden");
             $("#loading").removeClass("hidden");
-            $("#submit").addClass("hidden");
+            $("#face-btn").addClass("hidden");
         };
 
         var face_check = function() {

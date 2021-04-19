@@ -48,6 +48,7 @@ class LoginCodeFactory extends BaseFactory {
             if (!is_null($user)) {
                 $code =  $this->createCode($user["user_id"]);
                 $this->sendCodeEmail($code["email"], $code["first_name"], $code["code"]);
+                return array("success" => 1);
             } else {
                 return $this->errorArray("Invalid email entered");
             }

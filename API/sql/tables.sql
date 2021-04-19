@@ -32,12 +32,19 @@ create table token (
     developer_id int not null,
     user_id int not null,
     token varchar(50) default '',
-    type enum('auth', 'access') default 'auth',
+    type enum('auth', 'access', 'refresh') default 'auth',
     permission_email tinyint default 0,
     permission_firstname tinyint default 0,
     permission_lastname tinyint default 0,
     foreign key (user_id) references user(user_id),
     foreign key (developer_id) references developer(developer_id)
+);
+
+create table refreshtoken (
+    refreshtoken_id int primary key auto_increment,
+    token_id int not null,
+    token varchar(50) default '',
+    foreign key (token_id) references token(token_id)
 );
 
 create table face (
