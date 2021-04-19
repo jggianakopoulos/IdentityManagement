@@ -44,7 +44,7 @@
             </div>
         </div>
     </div>
-    <a style="padding: 2px 10px;background-color: #c3c3c3;margin-top: 2px;float: right;color: black;" <a="" href="http://localhost/identitymanagement/api/developer/logout.php">Click here to logout</a>
+    <a style="padding: 2px 10px;background-color: #c3c3c3;margin-top: 2px;float: right;color: black;" <a="" href="http://<?php echo $server?>/api/developer/logout.php">Click here to logout</a>
 </div>
 
 
