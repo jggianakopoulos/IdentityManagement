@@ -13,14 +13,14 @@
 <body class="background-color">
 <div>
     <div class="container">
-        <div class="branding" style="margin: 50px auto 0 auto;">
-            <img style="width:100px" src="../user.svg">
-        </div>
-        <div style="font-weight: 600;">Developer Login</div>
+
         <form action='register_action.php'>
             <div class='content'>
-                <div style="flex-direction: row;display: flex;">
-                    <div class="tab">IdentityManagement</div>
+                <div style="flex-direction: row;display: flex;align-items: center;align-self: center;padding-top: 20px;">
+                    <img style="width:100px" src="../user.svg"></div><div style="
+    text-align: center;
+    font-weight: bold;
+"> Developer Sign-In
                 </div>
                 <div id="login">
                     <div>
@@ -29,7 +29,7 @@
                             <input type='text' name='email' id='email'>
                         </div>
                         <div class="input-field">
-                            <label for='company'>Company (Optional)</label>
+                            <label for='company'>Company</label>
                             <input type='text' name='company' id='company'>
                         </div>
                         <div class="input-field">
