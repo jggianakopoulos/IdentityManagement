@@ -45,6 +45,8 @@ public class DrawerActivity extends AbstractActivity {
                 .withName("Change Password");
         SecondaryDrawerItem logout = new SecondaryDrawerItem().withIdentifier(5)
                 .withName("Logout");
+        PrimaryDrawerItem home = new PrimaryDrawerItem().withIdentifier(6)
+                .withName("Home");
 
         Drawer result = new DrawerBuilder()
                 .withActivity(activity)
@@ -55,6 +57,7 @@ public class DrawerActivity extends AbstractActivity {
                 .withSelectedItem(-1)
                 .addDrawerItems(
                         drawerEmptyItem,
+                        home,
                         changeSignIn,
                         faceUpdate,
                         profileSettings,
@@ -79,6 +82,9 @@ public class DrawerActivity extends AbstractActivity {
                             view.getContext().startActivity(intent);
                         } else if (drawerItem.getIdentifier() == 5) {
                             signOut();
+                        } else if (drawerItem.getIdentifier() == 6) {
+                            Intent intent = new Intent(activity, HomeActivity.class);
+                            view.getContext().startActivity(intent);
                         }
                         return true;
                     }

@@ -24,7 +24,7 @@
         android:id="@+id/button13"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="190dp"
+        android:layout_marginTop="160dp"
         android:onClick="updateFace"
         android:text="Update Face Capture"
         android:textAllCaps="false"
@@ -32,7 +32,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:padding="26dp"
-        android:textSize="32sp"/>
+        android:textSize="28sp"/>
 
     <Button
         android:id="@+id/button14"
@@ -40,35 +40,50 @@
         app:layout_constraintWidth_percent="0.8"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:onClick="updateProfile"
-        android:text="Profile Settings"
+        android:layout_marginTop="10dp"
+        android:onClick="signInSettings"
+        android:text="Change Sign In Methods"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button13"
         android:padding="26dp"
-        android:textSize="32sp"/>
+        android:textSize="24dp"/>
 
     <Button
         android:id="@+id/button15"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:onClick="changePassword"
+        android:layout_marginTop="10dp"
+        android:onClick="updateProfile"
         android:textAllCaps="false"
         android:padding="26dp"
-        android:text="Password Change"
-        android:textSize="32sp"
+        android:text="Profile Settings"
+        android:textSize="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button14"
         app:layout_constraintWidth_percent="0.8" />
+
     <Button
         android:id="@+id/button16"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="changePassword"
+        android:textAllCaps="false"
+        android:padding="26dp"
+        android:text="Password Change"
+        android:textSize="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button15"
+        app:layout_constraintWidth_percent="0.8" />
+    <Button
+        android:id="@+id/button17"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:onClick="signOut"
+        android:onClick="logout"
         android:text="Logout"
         android:padding="10dp"
         android:textSize="32sp"
@@ -76,7 +91,7 @@
         android:background="@color/darker_grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button15"
+        app:layout_constraintTop_toBottomOf="@+id/button16"
         app:layout_constraintWidth_percent="0.75" />
 
     <ImageView
@@ -98,7 +113,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:translationZ="90dp"
-        android:background="@color/blue_200">
+        android:background="@color/grey_200">
 
 <!--        <TextView-->
 <!--            android:id="@+id/toolbarText"-->
@@ -116,7 +131,7 @@
 <!--            app:layout_constraintStart_toStartOf="parent"-->
 <!--            app:layout_constraintTop_toTopOf="parent"-->
 <!--            android:translationZ="90dp"-->
-<!--            android:background="@color/blue_200"-->
+<!--            android:background="@color/grey_200"-->
 <!--            />-->
     </androidx.appcompat.widget.Toolbar>
 

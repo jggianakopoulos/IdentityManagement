@@ -61,26 +61,15 @@
         android:id="@+id/lastNameET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="40dp"
         android:ems="10"
         android:hint="Last Name"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/phoneNumberET"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent" />
-    <EditText
-        android:id="@+id/phoneNumberET"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:ems="10"
-        android:hint="Phone Number"
-        android:inputType="phone"
         app:layout_constraintBottom_toTopOf="@+id/passwordET"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent" />
+
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -95,6 +84,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:translationZ="90dp"
-        android:background="@color/blue_200">
+        android:background="@color/grey_200">
     </androidx.appcompat.widget.Toolbar>
 </androidx.constraintlayout.widget.ConstraintLayout>

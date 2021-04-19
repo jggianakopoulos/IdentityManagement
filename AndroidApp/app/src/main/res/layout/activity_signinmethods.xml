@@ -3,63 +3,103 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".Activities.SignInMethodsActivity">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="158dp"
-        android:layout_marginLeft="158dp"
-        android:layout_marginTop="442dp"
-        android:text="Update Preferences"
-        android:onClick="save_methods"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <CheckBox
-        android:id="@+id/usePassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="139dp"
-        android:layout_marginLeft="139dp"
-        android:layout_marginTop="168dp"
-        android:layout_marginBottom="531dp"
-        android:text="Password"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <CheckBox
-        android:id="@+id/useFace"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="158dp"
-        android:layout_marginLeft="158dp"
-        android:layout_marginTop="266dp"
-        android:text="Face/Camera"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <CheckBox
-        android:id="@+id/useCode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="158dp"
-        android:layout_marginLeft="158dp"
-        android:layout_marginTop="349dp"
-        android:text="Emailed Code"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            app:layout_constraintWidth_percent="0.8"
+            android:id="@+id/welcomePrompt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            android:text="On this page you can change what methods you want to use to sign in. While only one method is required, we highly recommend enabling at least two."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textAllCaps="false"
+            android:textSize="20dp"/>
 
 
+        <CheckBox
+            app:layout_constraintWidth_percent="0.8"
+            android:id="@+id/usePassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:text="Use my password (traditional login)"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/welcomePrompt"
+            android:padding="26dp"
+            android:textSize="20dp"/>
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:translationZ="90dp"
-        android:background="@color/blue_200">
-    </androidx.appcompat.widget.Toolbar>
+        <CheckBox
+            android:id="@+id/useCode"
+            android:textAllCaps="false"
+            app:layout_constraintWidth_percent="0.8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Email me a login code. "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/usePassword"
+            android:padding="26dp"
+            android:textSize="20dp"/>
+
+        <CheckBox
+            android:id="@+id/useFace"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textAllCaps="false"
+            android:padding="26dp"
+            android:text="Use Face to sign in. If you turn this on camera access will be required for all sign-ins."
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/useCode"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <Button
+            android:id="@+id/updateButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:onClick="save_methods"
+            android:text="Update"
+            android:padding="10dp"
+            android:textSize="32sp"
+            android:textAllCaps="false"
+            android:background="@color/grey_200"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/useFace"
+            app:layout_constraintWidth_percent="0.75" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:translationZ="90dp"
+            android:background="@color/grey_200">
+        </androidx.appcompat.widget.Toolbar>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

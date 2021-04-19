@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <style name="BezelImageView">
-        <item name="biv_maskDrawable">@drawable/camera_circle</item>
-        <item name="biv_drawCircularShadow">false</item>
-        <item name="biv_selectorOnPress">@color/black</item>
-        <item name="android:scaleType">centerInside</item>
-    </style>
-</resources>

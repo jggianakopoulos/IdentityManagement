@@ -9,7 +9,7 @@ import com.group.idm2.Tasks.ProfileTask;
 
 public class ProfileActivity extends DrawerActivity {
 
-    private EditText emailET, passwordET, firstNameET, lastNameET, phoneNumberET;
+    private EditText emailET, passwordET, firstNameET, lastNameET;
     private SharedPreferences sharedPreferences;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,14 +19,12 @@ public class ProfileActivity extends DrawerActivity {
         passwordET = (EditText)findViewById(R.id.passwordET);
         firstNameET = (EditText)findViewById(R.id.firstNameET);
         lastNameET = (EditText)findViewById(R.id.lastNameET);
-        phoneNumberET = (EditText)findViewById(R.id.phoneNumberET);
 
         sharedPreferences = this.getSharedPreferences("preferences",MODE_PRIVATE);
 
         emailET.setText(sharedPreferences.getString("email", ""));
         firstNameET.setText(sharedPreferences.getString("first_name", ""));
         lastNameET.setText(sharedPreferences.getString("last_name", ""));
-        phoneNumberET.setText(sharedPreferences.getString("phone_number", ""));
         super.onCreate(savedInstanceState);
     }
 
@@ -35,8 +33,7 @@ public class ProfileActivity extends DrawerActivity {
         String password = passwordET.getText().toString().trim();
         String first_name = firstNameET.getText().toString().trim();
         String last_name = lastNameET.getText().toString().trim();
-        String phone_number = phoneNumberET.getText().toString().trim();
 
-        new ProfileTask(this, email, password, first_name, last_name, phone_number).execute();
+        new ProfileTask(this, email, password, first_name, last_name).execute();
     }
 }
