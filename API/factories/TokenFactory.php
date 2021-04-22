@@ -11,22 +11,6 @@ class TokenFactory extends BaseFactory
         $this->table_id = "token_id";
     }
 
-    public function getDataFromToken($data) {
-        $token = $this->_getValue($data, "token");
-        $secret = $this->_getValue($data, "client_secret");
-        return $this->getTokenUser($token, $secret, "auth");
-    }
-    protected function getTokenUser($authtoken, $secret, $type) {
-        $stmt = $this->pdo->prepare("select token.*, user.* from token join developer using (developer_id) join user using (user_id) where token.token = ? and token.type = ? and developer.client_secret = ?");
-        $stmt->execute(array($authtoken, $type, $secret));
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($this->_hasValue($result)) {
-            return $result;
-        } else {
-            return $this->errorArray("Invalid credentials");
-        }
-    }
-
     // Validate, extract values, and create the token
     public function attemptCreateToken($user, $data) {
         $valid = $this->_validateCreateToken($user, $data);
@@ -119,7 +103,7 @@ class TokenFactory extends BaseFactory
     }
 
     protected function getToken($authtoken, $secret, $type) {
-        $stmt = $this->pdo->prepare("select token.* from token join developer using (developer_id) where token.token = ? and token.type = ? and developer.client_secret = ?");
+        $stmt = $this->pdo->prepare("select token.* from token join developer using (developer_id) where token.token = ? and token.type = ? and developer.client_secret = ? and (token.type ='auth' or token.expiration_date > now()) ");
         $stmt->execute(array($authtoken, $type, $secret));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -132,8 +116,8 @@ class TokenFactory extends BaseFactory
 
     // Convert an auth token to an access token
     protected function convertToken($token) {
-        $stmt = $this->pdo->prepare("update token set token = ?, type='access' where token_id = ?");
-        $stmt->execute(array(md5(uniqid()), $token["token_id"]));
+        $stmt = $this->pdo->prepare("update token set token = ?, type='access', expiration_date = ? where token_id = ?");
+        $stmt->execute(array(md5(uniqid()), $token["token_id"], $this->oneWeekTimestamp()));
 
         $token = $this->getByID($token["token_id"]);
 
@@ -210,6 +194,52 @@ class TokenFactory extends BaseFactory
         }
 
         return $values;
+    }
+
+    public function attemptExtendTokenExpiration($data) {
+        $values = $this->_validateExtendTokenExpiration($data);
+
+        if ($this->_hasError($values)) {
+            return $values;
+        }
+
+        return $this->extendTokenExpiration($values["token_id"]);
+    }
+
+    protected function extendTokenExpiration($access_token_id) {
+        $stmt = $this->pdo->prepare("update token set expiration_date = ? where token_id = ?");
+        $stmt->execute(array($this->oneWeekTimestamp(), $access_token_id));
+
+        $stmt = $this->pdo->prepare("select * from token where token_id = ?");
+        $stmt->execute(array($access_token_id));
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($this->_hasValue($result)) {
+            return $result;
+        } else {
+            return $this->errorArray("Error refreshing access token");
+        }
+    }
+
+    // Get the timestamp for a week from the current date
+    protected function oneWeekTimestamp() {
+        $date = date('Y-m-d H:i:s');
+        $date = new DateTime($date);
+        $date->add(new DateInterval('P7D'));
+        return $date->format('Y-m-d H:i:s');
+    }
+
+    protected function _validateExtendTokenExpiration($data) {
+        $refresh_token = $this->_getValue($data, "refreshtoken");
+        $access_token = $this->_getValue($data, "accesstoken");
+        $client_secret = $this->_getValue($data, "client_secret");
+
+        if (!$this->_hasValue($refresh_token) || !$this->_hasValue($access_token) || !$this->_hasValue($client_secret)) {
+            return $this->errorArray("You must send your client secret, an access token, and its corresponding refresh token to extend the expiration date of an access token");
+        } else {
+            return $this->_validateTokenData($data, "access");
+        }
+
     }
 
 }

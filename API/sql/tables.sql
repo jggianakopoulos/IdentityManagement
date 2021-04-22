@@ -40,6 +40,8 @@ create table token (
     foreign key (developer_id) references developer(developer_id)
 );
 
+alter table token add expiration_date datetime default null;
+
 create table refreshtoken (
     refreshtoken_id int primary key auto_increment,
     token_id int not null,
