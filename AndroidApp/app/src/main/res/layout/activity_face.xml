@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".Activities.FaceActivity">
 
     <ImageView
@@ -35,31 +36,29 @@
         app:layout_constraintWidth_percent="0.7" />
 
     <Button
-        app:layout_constraintWidth_percent="0.8"
         android:id="@+id/face"
         android:layout_width="0dp"
         android:layout_height="200px"
         android:onClick="openCamera"
         android:paddingRight="10px"
+        android:text="Scan Your Face"
+        app:cornerRadius="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="Scan Your Face"
-        app:layout_constraintBottom_toBottomOf="parent"
-/>
+        app:layout_constraintWidth_percent="0.8" />
 
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/blue_200"
+        android:translationZ="90dp"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:translationZ="90dp"
-        android:background="@color/grey_200">
-    </androidx.appcompat.widget.Toolbar>
-
+        app:layout_constraintTop_toTopOf="parent"></androidx.appcompat.widget.Toolbar>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
