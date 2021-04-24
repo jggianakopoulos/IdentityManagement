@@ -42,7 +42,7 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
                     </div>
                 </div>
                 <div id="permission-section" class="hidden" >
-                    <p style="margin:10px;max-width:350px;font-style:italic;">What information do you want to give to <b><?php echo $company; ?></b>?</p>
+                    <p style="margin:10px auto;max-width:300px;font-style:italic;background-color: #d2d2d2">What information do you want to give to <b><?php echo $company; ?></b>?</p>
                     <div>
                         <div class="input-field" style="flex-direction: row">
                             <div class='checkbox-label'>Email</div>
