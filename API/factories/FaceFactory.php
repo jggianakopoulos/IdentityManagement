@@ -110,7 +110,7 @@ class FaceFactory extends BaseFactory {
                 return array("success" => true);
             }
             elseif (preg_match($multiregex, $output)) {
-                return $this->errorArray("Multiple faces detected. Try again.");
+                return array("success" => true);
             }
             else {
                 return $this->errorArray("There was an error. Try again.");
