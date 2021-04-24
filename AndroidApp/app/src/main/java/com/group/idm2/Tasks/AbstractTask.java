@@ -114,7 +114,7 @@ public class AbstractTask extends AsyncTask<String, Void, String> {
                 }
             } else {
                 System.out.println(json.toString());
-                Toast.makeText(this.context,"An error occurred with your " + this.actionWord,Toast.LENGTH_SHORT).show();
+                Toast.makeText(this.context,"Invalid credentials submitted for your " + this.actionWord,Toast.LENGTH_SHORT).show();
                 if (!this.goHome) {
                     Intent send = new Intent(this.context, FaceActivity.class);
                     context.startActivity(send);

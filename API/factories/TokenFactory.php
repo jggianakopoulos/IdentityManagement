@@ -128,19 +128,30 @@ class TokenFactory extends BaseFactory
         }
     }
 
-
-    // Convert auth token and get new access token, refresh token, and user data
-    public function attemptGetTokenData($data) {
-        $token = $this->_validateTokenData($data, "auth");
+    protected function attemptGetTokenData($data, $type) {
+        $token = $this->_validateTokenData($data, $type);
 
         if ($this->_hasError($token)) {
             return $token;
         }
 
-        $userdata =  $this->getUserData($token);
+        return $this->getUserData($token);
+    }
 
-        $tf = new TokenFactory();
-        $access_token = $tf->retrieveConvertedToken($data);
+    public function attemptGetAccessTokenData($data) {
+        return $this->attemptGetTokenData($data, "access");
+    }
+
+
+    // Convert auth token and get new access token, refresh token, and user data
+    public function attemptGetAuthTokenData($data) {
+        $userdata = $this->attemptGetTokenData($data, "auth");
+
+        if ($this->_hasError($userdata)) {
+            return $userdata;
+        }
+
+        $access_token = $this->retrieveConvertedToken($data);
 
         if ($this->_hasError($access_token)) {
             return $this->errorArray("There was a problem with your token");

@@ -5,6 +5,9 @@ import android.graphics.Bitmap;
 import android.util.Base64;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 
@@ -41,7 +44,18 @@ public class FaceTask extends AbstractTask {
 
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-        Toast.makeText(this.context,"Success! Your face capture can now be used to sign in.",Toast.LENGTH_SHORT).show();
+        JSONObject json = null;
+        try {
+            json = new JSONObject(result);
+            if (Integer.parseInt(json.getString("user_id")) > 0) {
+                Toast.makeText(this.context,"Success! Your face capture can now be used to sign in.",Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this.context,"Error! Your face could not be detected.",Toast.LENGTH_SHORT).show();
+            }
+        } catch (JSONException e) {
+            Toast.makeText(this.context,"Error! Your face could not be detected.",Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 

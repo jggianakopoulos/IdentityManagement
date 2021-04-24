@@ -91,7 +91,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:translationZ="90dp"
-        android:background="@color/grey_200">
+        android:background="@color/color_primary">
 
         <TextView
             android:id="@+id/toolbarText"
@@ -116,7 +116,7 @@
 <!--        android:id="@+id/topView"-->
 <!--        android:layout_width="0dp"-->
 <!--        android:layout_height="75dp"-->
-<!--        android:background="@color/grey_200"-->
+<!--        android:background="@color/color_primary"-->
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toTopOf="parent"-->
