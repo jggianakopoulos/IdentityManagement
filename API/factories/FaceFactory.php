@@ -187,7 +187,7 @@ class FaceFactory extends BaseFactory {
             //We need to remove the key from the directory if it fails the detection check. Ideally we should have a staging area and only move it to the final key location after verifying.
                 $command = escapeshellcmd('rm ' . $userfacepath . "/key.png");
                 shell_exec($command);
-                return $output;
+                return $this->errorArray("No face was detected");
             }
 
         } else {
