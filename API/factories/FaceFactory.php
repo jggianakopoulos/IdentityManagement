@@ -107,7 +107,7 @@ class FaceFactory extends BaseFactory {
             }
             //this regex is more strict so must happen first. A single face will also trip the multi-face regex
             elseif (preg_match($singleregex, $output)) {
-                return true;
+                return array("success" => true);
             }
             elseif (preg_match($multiregex, $output)) {
                 return $this->errorArray("Multiple faces detected. Try again.");
@@ -185,7 +185,7 @@ class FaceFactory extends BaseFactory {
         if ($dir && file_put_contents($userfacepath . "/key.png", $image)) {
             $output = $this->faceDetection($userfacepath . "/key.png");
 
-            if ($output != "null" && $this->_hasValue($output)){
+            if ($this->_noError($output)){
                 $this->userFaceUploaded($user["user_id"]);
                 $this->trackFile($user["user_id"], $userfacepath);
                 return $user;
