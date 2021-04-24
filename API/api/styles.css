@@ -1,3 +1,5 @@
+
+
 .container {
     padding: 0;
     margin: 200px 0 0 0;
@@ -6,6 +8,7 @@
     flex-direction:column;
     align-items: center;
     justify-content: center;
+    background: #6600cc;
 }
 
 .content {
@@ -108,4 +111,3 @@
         transform: rotate(360deg);
     }
 }
-
