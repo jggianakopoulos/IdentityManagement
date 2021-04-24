@@ -4,8 +4,9 @@ require("../factories/DeveloperFactory.php");
 require("../config/settings.php");
 
 $f = new DeveloperFactory();
-if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirect_url") && $f->_hasValue($_REQUEST, "client_id") && $f->validateClientID($_REQUEST["client_id"])) {
+if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirect_url") && $f->_hasValue($_REQUEST, "client_id") && $company = $f->validateClientID($_REQUEST["client_id"])) {
     $client_id = $_REQUEST["client_id"];
+    $company = ($f->_hasValue($company)) ? $company : "Company";
 
     ?>
 
@@ -41,7 +42,7 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
                     </div>
                 </div>
                 <div id="permission-section" class="hidden" >
-                    <p style="margin:10px;max-width:350px;font-style:italic;">What information do you want to give to  <b>Company</b>?</p>
+                    <p style="margin:10px;max-width:350px;font-style:italic;">What information do you want to give to <b><?php echo $company; ?></b>?</p>
                     <div>
                         <div class="input-field" style="flex-direction: row">
                             <div class='checkbox-label'>Email</div>
