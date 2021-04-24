@@ -95,7 +95,7 @@ class FaceFactory extends BaseFactory {
             $output = shell_exec($command);
             $singleregex = '/^key\.png(,[0-9]{1,4}){4}$/';
             $multiregex = '/key\.png(,[0-9]{1,4}){4}/';
-
+            return $this->errorArray($output);
             if ($output == '')
             {
                 return $this->errorArray("No face detected");
@@ -177,7 +177,7 @@ class FaceFactory extends BaseFactory {
 
         if ($dir && file_put_contents($userfacepath . "/key.png", $image)) {
             $output = $this->faceDetection($userfacepath . "/key.png");
-
+            return $output;
             if ($output){
                 $this->userFaceUploaded($user["user_id"]);
                 $this->trackFile($user["user_id"], $userfacepath);
