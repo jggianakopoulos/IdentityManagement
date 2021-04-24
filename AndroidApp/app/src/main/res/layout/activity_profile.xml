@@ -84,6 +84,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:translationZ="90dp"
-        android:background="@color/grey_200">
+        android:background="@color/color_primary">
     </androidx.appcompat.widget.Toolbar>
 </androidx.constraintlayout.widget.ConstraintLayout>
