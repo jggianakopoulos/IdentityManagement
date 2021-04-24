@@ -9,6 +9,7 @@ class FaceFactory extends BaseFactory {
         $this->table_id = "face_id";
     }
 
+    // Validate and compare a user's face with their sign-in key picture
     public function considerCompareFaces($data) {
         $user = $this->_validateCompareFaces($data);
 
@@ -33,6 +34,7 @@ class FaceFactory extends BaseFactory {
 
     }
 
+    // Compare the new face with the face currently stored as a key
     protected function compareFaces($user, $image) {
         $userdatapath = "/var/www/idm/API/assets/userdata/";
         $userfacepath = $userdatapath . "faces/";
@@ -56,6 +58,7 @@ class FaceFactory extends BaseFactory {
         }
     }
 
+    // Stores an image for comparison
     protected function storeImage($image, $user) {
         $userfacepath = "/var/www/idm/API/assets/userdata/faces/" . $user["user_id"];
         date_default_timezone_set('UTC');
@@ -75,6 +78,7 @@ class FaceFactory extends BaseFactory {
         }
     }
 
+    // Face Recognition function. Pass in two image paths and they'll be compared
     protected function faceRecognition($compare_to, $new_face) {
         $facerecognitionpath = "/home/steverobertscott/.virtualenvs/dlib/bin/face_recognition";
         $command = escapeshellcmd($facerecognitionpath . " " . $compare_to . " " . $new_face);
@@ -89,6 +93,7 @@ class FaceFactory extends BaseFactory {
         }
     }
 
+    // Face detection. Assures there is one valid face in the picture located at a specified path.
     protected function faceDetection($path) {
             $facedetectionpath = "/home/steverobertscott/.virtualenvs/dlib/bin/face_detection";
             $command = escapeshellcmd($facedetectionpath . " " . $path);
@@ -127,6 +132,7 @@ class FaceFactory extends BaseFactory {
         return base64_decode($img);
     }
 
+    // Validate and update a user's face key.
     public function considerUpdate($data) {
         $values = $this->_validateUpdate($data);
 
@@ -160,6 +166,7 @@ class FaceFactory extends BaseFactory {
         }
     }
 
+    // The guts of a face update. Validate the image, detect the face, and store it if all requirements are met.
     protected function updateFace($user, $data) {
         $image = $this->base64toImage($data);
 
