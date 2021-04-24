@@ -185,7 +185,7 @@ class FaceFactory extends BaseFactory {
         if ($dir && file_put_contents($userfacepath . "/key.png", $image)) {
             $output = $this->faceDetection($userfacepath . "/key.png");
 
-            if ($this->_hasValue($output)){
+            if ($output != "null" && $this->_hasValue($output)){
                 $this->userFaceUploaded($user["user_id"]);
                 $this->trackFile($user["user_id"], $userfacepath);
                 return $user;
