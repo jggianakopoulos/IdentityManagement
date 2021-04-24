@@ -27,7 +27,7 @@ class DeveloperFactory extends AccountFactory {
         $dev = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($this->_hasValue($dev)) {
-            return true;
+            return $dev["company"];
         } else {
             return false;
         }

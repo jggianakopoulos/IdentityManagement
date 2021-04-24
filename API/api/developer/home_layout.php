@@ -1,6 +1,6 @@
 <?php require("../../config/settings.php")?>
 <!DOCTYPE html>
-<html class="background-color" style="background-color: #fbfbfb">
+<html class="background-color">
 <head>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="../sha256.js" type="text/javascript"></script>
@@ -8,10 +8,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 
 </head>
-<body class="background-color" style="
-    background-color: #fbfbfb;
-">
-<div style="background-color: #fbfbfb"><div style="margin: auto;background-color: #c3c3c3;padding-top: 80px;max-width: 1140px;font-weight: bold;display: flex;font-size: 30px;padding-left: 20px;"><img style="width: 50px;padding: 5px;" src="../user.svg"><div style="align-self: flex-end;padding-left: 10px;align-items: end;">IdentityManagement</div>
+<body class="background-color">
+<div><div style="margin: auto;background-color: #c3c3c3;padding-top: 80px;max-width: 1140px;font-weight: bold;display: flex;font-size: 30px;padding-left: 20px;"><img style="width: 50px;padding: 5px;" src="../user.svg"><div style="align-self: flex-end;padding-left: 10px;align-items: end;">IdentityManagement</div>
     </div></div>
 <div class="container" style="display: block;padding: 0;margin: auto;background-color: #fbfbfb;">
     <div style="

@@ -192,6 +192,7 @@ class UserFactory extends AccountFactory {
         }
     }
 
+    // Make sure login code exists and is linked to the user
     public function codeCheck($data, $return_bool = false) {
         $lf = new LoginCodeFactory();
         $user = $lf->loginCodeExists($data);
@@ -226,6 +227,7 @@ class UserFactory extends AccountFactory {
         }
     }
 
+    // This function is used to sort redirects/ return values on the authorization site. The possible return values are a "next" page (in case they need to sign in with more methods, a token (when a successful login occurs), or an error. The authorization site uses these return values to figure out what to do next.
     protected function assembleReturnValue($user, $source, $data) {
         $use_password = $user["use_password"];
         $use_code = $user["use_code"];
@@ -287,7 +289,7 @@ class UserFactory extends AccountFactory {
         }
     }
 
-
+    // Figure out if a user has configured facial recognition.
     public function getFaceStatus($email) {
         $user = $this->getByEmail($email);
 

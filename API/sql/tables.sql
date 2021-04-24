@@ -7,15 +7,12 @@ create table user (
     password varbinary(64) not null,
     salt varchar(36) default null,
     locked_until datetime default null,
+    use_password tinyint(1) default 1,
+    use_face tinyint(1) default 0,
+    use_code tinyint(1) default 0,
+    face_uploaded tinyint default 0,
     primary key (user_id)
 );
-
-alter table user
-    add use_password tinyint(1) default 1,
-    add use_face tinyint(1) default 0,
-    add use_code tinyint(1) default 0;
-
-alter table user add face_uploaded tinyint default 0;
 
 create table developer (
 	developer_id int not null auto_increment,
