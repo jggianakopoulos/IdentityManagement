@@ -6,6 +6,7 @@ require("../config/settings.php");
 $f = new DeveloperFactory();
 if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirect_url") && $f->_hasValue($_REQUEST, "client_id") && $company = $f->validateClientID($_REQUEST["client_id"])) {
     $client_id = $_REQUEST["client_id"];
+    $cancel_url = $_REQUEST["cancel_url"];
     $company = ($f->_hasValue($company)) ? $company : "Company";
 
     ?>
