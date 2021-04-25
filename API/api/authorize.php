@@ -60,7 +60,7 @@ if ($f->_hasValue($_REQUEST, "cancel_url")  && $f->_hasValue($_REQUEST, "redirec
                     <div style="margin:5px;">
                     </div>
                     <div style="margin:5px;">
-                        <button class="btn nav-btn" style="float:left;" id='logout-btn' type="button">Return</button>
+                        <a href="<?php echo $cancel_url; ?>"><button class="btn nav-btn" style="float:left;" id='logout-btn' type="button">Return</button></a>
                         <button class="btn nav-btn" style="float:right;" id='permission-btn' type="button" >Continue</button>
                     </div>
                 </div>
