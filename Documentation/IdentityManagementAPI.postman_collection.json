@@ -1,0 +1,369 @@
+{
+	"info": {
+		"_postman_id": "4d49187d-16c2-414f-89a8-1a0313abee36",
+		"name": "IdentityManagementAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "email@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "5E884898DA28047151D0E56F8DC6292773603D0D6AABBDD62A11EF721D1542D8",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/identitymanagement/api/user/login.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"identitymanagement",
+						"api",
+						"user",
+						"login.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "email2@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "5E884898DA28047151D0E56F8DC6292773603D0D6AABBDD62A11EF721D1542D8",
+							"type": "text"
+						},
+						{
+							"key": "confirm_password",
+							"value": "5E884898DA28047151D0E56F8DC6292773603D0D6AABBDD62A11EF721D1542D8",
+							"type": "text"
+						},
+						{
+							"key": "first_name",
+							"value": "first",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "last",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/identitymanagement/api/user/register.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"identitymanagement",
+						"api",
+						"user",
+						"register.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Profile Update",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "email@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "old_email",
+							"value": "email@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "5E884898DA28047151D0E56F8DC6292773603D0D6AABBDD62A11EF721D1542D8",
+							"type": "text"
+						},
+						{
+							"key": "first_name",
+							"value": "new first",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "new last",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/identitymanagement/api/user/profileupdate.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"identitymanagement",
+						"api",
+						"user",
+						"profileupdate.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Password Change",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "email@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "new_password",
+							"value": "password1",
+							"type": "text"
+						},
+						{
+							"key": "confirm_password",
+							"value": "password1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/identitymanagement/api/user/passwordchange.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"identitymanagement",
+						"api",
+						"user",
+						"passwordchange.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Sign-In Methods",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "use_face",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "email2@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "5E884898DA28047151D0E56F8DC6292773603D0D6AABBDD62A11EF721D1542D8",
+							"type": "text"
+						},
+						{
+							"key": "use_code",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "use_password",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/identitymanagement/api/user/signinmethods.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"identitymanagement",
+						"api",
+						"user",
+						"signinmethods.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Developer Refresh token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "refreshtoken",
+							"value": "40830dc8fbef728d1243af957936df46",
+							"type": "text"
+						},
+						{
+							"key": "accesstoken",
+							"value": "2a987150a2ebbd5ac1977cf543c39ce3",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "eacf1535c5ca11e8d59189c08688596a",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/identitymanagement/api/developer/refresh_token.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"identitymanagement",
+						"api",
+						"developer",
+						"refresh_token.php"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Developer Convert Authtoken",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "authtoken",
+							"value": "eacf1535c5ca11e8d59189c08688596a",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "2a987150a2ebbd5ac1977cf543c39ce3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/identitymanagement/api/developer/convert_token.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"identitymanagement",
+						"api",
+						"developer",
+						"convert_token.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Update Face",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"value": "image",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "email@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/identitymanagement/api/user/updateface.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"identitymanagement",
+						"api",
+						"user",
+						"updateface.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
